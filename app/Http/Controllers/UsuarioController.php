@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuario;
+use App\Models\Rol;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\UsuarioRequest;
@@ -28,8 +29,13 @@ class UsuarioController extends Controller
     public function create(): View
     {
         $usuario = new Usuario();
-
-        return view('usuario.create', compact('usuario'));
+        $rols = Rol::all();
+        $rolsSeleccionados = [];
+        // Obtener usuarios con rol "Responsable"|      
+        $responsables = Usuario::whereHas('roles', function($query) {
+            $query->where('rol_usuario', 'Responsable');
+        })->get();
+        return view('usuario.create', compact('usuario', 'rols', 'rolsSeleccionados', 'responsables'));
     }
 
     /**
@@ -37,7 +43,8 @@ class UsuarioController extends Controller
      */
     public function store(UsuarioRequest $request): RedirectResponse
     {
-        Usuario::create($request->validated());
+        $usuario = Usuario::create($request->validated());
+        $usuario->roles()->attach($request->input('roles', []));
 
         return Redirect::route('usuarios.index')
             ->with('success', 'Usuario created successfully.');
@@ -59,8 +66,13 @@ class UsuarioController extends Controller
     public function edit($id): View
     {
         $usuario = Usuario::find($id);
-
-        return view('usuario.edit', compact('usuario'));
+        $rols = Rol::all();
+        $rolsSeleccionados = $usuario->roles->pluck('id_rol')->toArray();
+        // Obtener usuarios con rol "Responsable"
+        $responsables = Usuario::whereHas('roles', function($query) {
+            $query->where('rol_usuario', 'Responsable');
+        })->get();
+        return view('usuario.edit', compact('usuario', 'rols', 'rolsSeleccionados', 'responsables'));
     }
 
     /**
@@ -69,6 +81,8 @@ class UsuarioController extends Controller
     public function update(UsuarioRequest $request, Usuario $usuario): RedirectResponse
     {
         $usuario->update($request->validated());
+
+        $usuario->roles()->sync($request->input('roles', []));
 
         return Redirect::route('usuarios.index')
             ->with('success', 'Usuario updated successfully');

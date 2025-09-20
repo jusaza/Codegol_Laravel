@@ -1,12 +1,8 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Usuarios
+    Rols
 @endsection
-
-@push('styles')
-<link rel="stylesheet" href="{{ asset('css/user1.css') }}">
-@endpush
 
 @section('content')
     <div class="container-fluid">
@@ -17,11 +13,11 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Usuarios') }}
+                                {{ __('Rols') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('usuarios.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('rols.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -40,54 +36,24 @@
                                     <tr>
                                         <th>No</th>
                                         
-									<th >Id Usuario</th>
-									<th >Correo</th>
-									<th >Contrasena</th>
-									<th >Nombre Completo</th>
-									<th >Num Identificacion</th>
-									<th >Tipo Documento</th>
-									<th >Telefono 1</th>
-									<th >Telefono 2</th>
-									<th >Direccion</th>
-									<th >Genero</th>
-									<th >Fecha Nacimiento</th>
-									<th >Lugar Nacimiento</th>
-									<th >Grupo Sanguineo</th>
-									<th >Foto Perfil</th>
-									<th >Estado</th>
-									<th >Id Usuario Registro</th>
-									<th >Id Responsable</th>
+									<th >Id Rol</th>
+									<th >Rol Usuario</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($usuarios as $usuario)
+                                    @foreach ($rols as $rol)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-										<td >{{ $usuario->id_usuario }}</td>
-										<td >{{ $usuario->correo }}</td>
-										<td >{{ $usuario->contrasena }}</td>
-										<td >{{ $usuario->nombre_completo }}</td>
-										<td >{{ $usuario->num_identificacion }}</td>
-										<td >{{ $usuario->tipo_documento }}</td>
-										<td >{{ $usuario->telefono_1 }}</td>
-										<td >{{ $usuario->telefono_2 }}</td>
-										<td >{{ $usuario->direccion }}</td>
-										<td >{{ $usuario->genero }}</td>
-										<td >{{ $usuario->fecha_nacimiento }}</td>
-										<td >{{ $usuario->lugar_nacimiento }}</td>
-										<td >{{ $usuario->grupo_sanguineo }}</td>
-										<td >{{ $usuario->foto_perfil }}</td>
-										<td >{{ $usuario->estado }}</td>
-										<td >{{ $usuario->id_usuario_registro }}</td>
-										<td >{{ $usuario->id_responsable }}</td>
+										<td >{{ $rol->id_rol }}</td>
+										<td >{{ $rol->rol_usuario }}</td>
 
                                             <td>
-                                                <form action="{{ route('usuarios.destroy', $usuario->id_usuario) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('usuarios.show', $usuario->id_usuario) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('usuarios.edit', $usuario->id_usuario) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                <form action="{{ route('rols.destroy', $rol->id_rol) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('rols.show', $rol->id_rol) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('rols.edit', $rol->id_rol) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm" onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
@@ -100,7 +66,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $usuarios->withQueryString()->links() !!}
+                {!! $rols->withQueryString()->links() !!}
             </div>
         </div>
     </div>

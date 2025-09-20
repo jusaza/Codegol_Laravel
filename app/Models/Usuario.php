@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -25,27 +26,19 @@ use Illuminate\Database\Eloquent\Model;
  * @property $id_usuario_registro
  * @property $id_responsable
  *
+ * @property Usuario $usuario1
+ * @property Usuario $usuario2
+ * @property Usuario[] $usuario3
+ * @property Usuario[] $usuario4
+ * @property Rol[] $roles
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class Usuario extends Model
 {
-    // ❌ Si no quieres que se usen created_at y updated_at
-    public $timestamps = false;
-
-    // Nombre exacto de la tabla
-    protected $table = 'usuario';
-
-    // Clave primaria personalizada
     protected $primaryKey = 'id_usuario';
-
-    // Si la PK es auto-incremental
-    public $incrementing = true;
-
-    // Tipo de dato de la PK
-    protected $keyType = 'int';
-
-    // Paginación por defecto
+    protected $table = 'usuario';
+    public $timestamps = false;
     protected $perPage = 20;
 
     /**
@@ -53,22 +46,44 @@ class Usuario extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'correo',
-        'contrasena',
-        'nombre_completo',
-        'num_identificacion',
-        'tipo_documento',
-        'telefono_1',
-        'telefono_2',
-        'direccion',
-        'genero',
-        'fecha_nacimiento',
-        'lugar_nacimiento',
-        'grupo_sanguineo',
-        'foto_perfil',
-        'estado',
-        'id_usuario_registro',
-        'id_responsable'
-    ];
+    protected $fillable = ['correo', 'contrasena', 'nombre_completo', 'num_identificacion', 'tipo_documento', 'telefono_1', 'telefono_2', 'direccion', 'genero', 'fecha_nacimiento', 'lugar_nacimiento', 'grupo_sanguineo', 'foto_perfil', 'estado', 'id_usuario_registro', 'id_responsable'];
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function usuario1()
+    {
+        return $this->belongsTo(\App\Models\Usuario::class, 'id_responsable', 'id_usuario');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function usuario2()
+    {
+        return $this->belongsTo(\App\Models\Usuario::class, 'id_usuario_registro', 'id_usuario');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function usuario3()
+    {
+        return $this->hasMany(\App\Models\Usuario::class, 'id_usuario', 'id_responsable');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function usuario4()
+    {
+        return $this->hasMany(\App\Models\Usuario::class, 'id_usuario', 'id_usuario_registro');
+    }
+
+    public function roles()
+{
+    return $this->belongsToMany(Rol::class, 'detalles_usuario_rol', 'id_usuario', 'id_rol');
+}
+    
 }

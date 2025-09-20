@@ -1,18 +1,15 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\HomeController;
+
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-// rutas de login/register/logout
-Auth::routes();
+//Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// ruta de inicio (después de login)
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-// CRUD de usuarios
 Route::resource('usuarios', UsuarioController::class);
+Route::resource('rols', RolController::class);
