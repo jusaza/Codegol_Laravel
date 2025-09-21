@@ -4,33 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Escuela de Fútbol Pinze</title>
-  <link rel="stylesheet" href="css/style_pag_prin.css">
+  <link rel="stylesheet" href="{{ asset('css/style_pag_prin.css') }}">
 </head>
 <body>
   <aside class="menu">
-    <a href="pagina_original" class="logo" aria-label="Logo Escuela de Fútbol Pinze">
-      <img src="imagenes/logo.jpg" alt="Logo Escuela de Fútbol Pinze" />
+    <a href="{{ url('/pagina_original') }}" class="logo" aria-label="Logo Escuela de Fútbol Pinze">
+      <img src="{{ asset('imagenes/logo.jpg') }}" alt="Logo Escuela de Fútbol Pinze" />
     </a>
 
     <h2>⚽ Menú ⚽</h2>
     <ul>
       <li>
-        <a href="./registropag">Usuarios</a>
-      <li>
-        <a href="./entrenopag">Entrenamiento</a>
-      <li>
-        <a href="./inventariopag">Inventario</a>
+        <a href="{{ url('/usuario/registropag') }}">Usuarios</a>
       </li>
       <li>
-        <a href="./rendimientopag">Rendimiento</a>
+        <a href="{{ url('/entrenamientopag') }}">Entrenamiento</a>
       </li>
       <li>
-        <a href="./matriculapag">Matrícula</a>
+        <a href="{{ url('/inventariopag') }}">Inventario</a>
+      </li>
       <li>
-        <a href="./pagopag">Pago</a>
+        <a href="{{ url('/rendimientopag') }}">Rendimiento</a>
+      </li>
+      <li>
+        <a href="{{ url('/matriculapag') }}">Matrícula</a>
+      </li>
+      <li>
+        <a href="{{ url('/pagoregistro') }}">Pago</a>
       </li>
     </ul>
-    <a href="./index" class="cerrar-sesion">Cerrar sesión</a>
+    <a href="{{ url('/') }}" class="cerrar-sesion">Cerrar sesión</a>
   </aside>
 
   <div class="contenido">
@@ -52,15 +55,15 @@
 
       <div class="galeria">
         <div class="tarjeta" tabindex="0">
-          <img src="./imagenes/servicio1.PNG" alt="Imagen 1" />
+          <img src="{{ asset('imagenes/servicio1.PNG') }}" alt="Imagen 1" />
           <div class="info">Nuestro mayor orgullo son los más pequeños, a quienes guiamos con paciencia y alegría para que crezcan felices y apasionados por el fútbol.</div>
         </div>
         <div class="tarjeta" tabindex="0">
-          <img src="./imagenes/servicio2.PNG" alt="Imagen 2" />
+          <img src="{{ asset('imagenes/servicio2.PNG') }}" alt="Imagen 2" />
           <div class="info">Fomentamos la disciplina, el respeto y el liderazgo, para que cada jugador sea un ejemplo dentro y fuera de la cancha.</div>
         </div>
         <div class="tarjeta" tabindex="0">
-          <img src="./imagenes/servicio4.PNG" alt="Imagen 3" />
+          <img src="{{ asset('imagenes/servicio4.PNG') }}" alt="Imagen 3" />
           <div class="info">Apoyamos el talento y esfuerzo de cada jugador para que alcance su mejor versión.</div>
         </div>
       </div>

@@ -9,14 +9,14 @@
 <body>
 
   <header>
-    <a href="../registropag" class="logo" aria-label="Logo Escuela de Fútbol Pinze">
+    <a href="../registropag.html" class="logo" aria-label="Logo Escuela de Fútbol Pinze">
       <img src="../imagenes/logo.jpg" alt="Logo Escuela de Fútbol Pinze" />
     </a>
-    <a href="../registropag" class="volver">Volver</a>
+    <a href="../registropag.html" class="volver">Volver</a>
   </header>
 
   <div class="login-box" role="main" aria-label="Formulario de registro">
-    <h1>Registro de la escuela de Fútbol Pinze</h1>
+    <h1>Actualización de datos </h1>
 
     <form action="../registropag.html" method="GET">
 
@@ -37,7 +37,7 @@
 
       <div class="Formgrupo">
         <label for="num_identificacion">Número de identificación</label>
-        <input type="number" name="num_identificacion" placeholder="Ingrese su número de identificación" required>
+        <input type="number" name="num_identificacion" placeholder="Ingrese su número de identificación" readonly>
       </div>
 
       <div class="Formgrupo">
@@ -112,8 +112,9 @@
         <input type="hidden" name="id_responsable" placeholder="ID del responsable" readonly>
       </div>
 
-      <button type="submit">Registrarse</button>
+      <button type="submit">Actualizar</button>
     </form>
+
   </div>
 
 </body>

@@ -4,20 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Escuela de Fútbol Pinze - Servicios</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 </head>
 <body>
 
 <header>
   <div class="logo" tabindex="0" aria-label="Logo Escuela de Fútbol Pinze">
-    <img src="imagenes/logo.jpg" alt="Logo Escuela de Fútbol Pinze" />
+    <img src="{{ asset('imagenes/logo.jpg') }}" alt="Logo Escuela de Fútbol Pinze" />
     <h2>Escuela de Fútbol Pinze</h2>
   </div>
   <nav>
-    <a href="index">⚽ Inicio</a>
-    <a href="servicios">🥅 Servicios</a>
-    <a href="nosotros">🏆 Nosotros</a>
-    <a href="./formularios/inicio_sesion" class="iniciar-sesion">Iniciar sesión</a>
+    <a href="{{ url('/') }}">⚽ Inicio</a>
+    <a href="{{ url('/servicios') }}">🥅 Servicios</a>
+    <a href="{{ url('/nosotros') }}">🏆 Nosotros</a>
+    <a href="{{ url('/login') }}" class="iniciar-sesion">Iniciar sesión</a>
   </nav>
 </header>
 
@@ -34,7 +34,7 @@
       <p>Brindamos entrenamientos adaptados a cada edad y nivel, con entrenadores expertos que fomentan técnica, táctica y condición física. Nuestro objetivo es que cada jugador mejore día a día en un ambiente motivador y seguro.<br>🏃🏼‍♀️</p>
     </div>
     <div class="servicio-imagen">
-      <img src="imagenes/servicio1.PNG" alt="Entrenamiento personalizado en cancha" />
+      <img src="{{ asset('imagenes/servicio1.PNG') }}" alt="Entrenamiento personalizado en cancha" />
     </div>
   </section>
 
@@ -44,7 +44,7 @@
       <p>Organizamos torneos internos y participamos en competencias regionales para que los jugadores experimenten la emoción del juego competitivo, aprendiendo valores como la disciplina, el respeto y el trabajo en equipo.<br>🏆</p>
     </div>
     <div class="servicio-imagen">
-      <img src="imagenes/servicio2.PNG" alt="Jugadores en torneo" />
+      <img src="{{ asset('imagenes/servicio2.PNG') }}" alt="Jugadores en torneo" />
     </div>
   </section>
 
@@ -54,7 +54,7 @@
       <p>Realizamos evaluaciones periódicas para medir habilidades técnicas, físicas y mentales. Esto nos permite personalizar el entrenamiento y potenciar el desarrollo de cada jugador.<br>📊</p>
     </div>
     <div class="servicio-imagen">
-      <img src="imagenes/servicio3.PNG" alt="Evaluación de rendimiento deportivo" />
+      <img src="{{ asset('imagenes/servicio3.PNG') }}" alt="Evaluación de rendimiento deportivo" />
     </div>
   </section>
 
@@ -64,7 +64,7 @@
       <p>Además de la formación deportiva, fomentamos valores como el respeto, la responsabilidad y el trabajo en equipo, preparando a los jugadores para ser líderes dentro y fuera del campo<br>🤝🏻</p>
     </div>
     <div class="servicio-imagen">
-      <img src="imagenes/servicio4.PNG" alt="Formación en liderazgo deportivo" />
+      <img src="{{ asset('imagenes/servicio4.PNG') }}" alt="Formación en liderazgo deportivo" />
     </div>
   </section>
 </main>

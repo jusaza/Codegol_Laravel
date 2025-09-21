@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rol', function (Blueprint $table) {
-            $table->TinyIncrements('id_rol');
+            $table->increments('id_rol');
             $table->enum('rol_usuario', [
                 'Administrador',
                 'Entrenador',

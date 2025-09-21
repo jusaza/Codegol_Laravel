@@ -4,25 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Usuarios - Escuela de Fútbol Pinze</title>
-  <link rel="stylesheet" href="css/style_pag_prin.css">
-  <link rel="stylesheet" href="css/stylepag.css">
+  <link rel="stylesheet" href="{{ asset('css/style_pag_prin.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/stylepag.css') }}">
 </head>
 <body>
 
   <aside class="menu">
-    <a href="./pagina_original" class="logo" aria-label="Logo Escuela de Fútbol Pinze">
-      <img src="./imagenes/logo.jpg" alt="Logo Escuela de Fútbol Pinze" />
+    <a href="{{ url('/pagina_original') }}" class="logo" aria-label="Logo Escuela de Fútbol Pinze">
+      <img src="{{ asset('imagenes/logo.jpg') }}" alt="Logo Escuela de Fútbol Pinze" />
     </a>
     <h2>⚽ Menú ⚽</h2>
     <ul>
-      <li><a href="./registropag">Usuarios</a></li>
-      <li><a href="./entrenopag">Entrenamiento</a></li>
-      <li><a href="./inventariopag">Inventario</a></li>
-      <li><a href="./rendimientopag">Rendimiento</a></li>
-      <li><a href="./matriculapag">Matrícula</a></li>
-      <li><a href="./pagopag">Pago</a></li>
+      <li><a href="{{ url('/usuario/registropag') }}">Usuarios</a></li>
+      <li><a href="{{ url('/entrenamientopag') }}">Entrenamiento</a></li>
+      <li><a href="{{ url('/inventariopag') }}">Inventario</a></li>
+      <li><a href="{{ url('/rendimientopag') }}">Rendimiento</a></li>
+      <li><a href="{{ url('/matriculapag') }}">Matrícula</a></li>
+      <li><a href="{{ url('/pagoregistro') }}">Pago</a></li>
     </ul>
-    <a href="./index" class="cerrar-sesion">Cerrar sesión</a>
+    <a href="{{ url('/') }}" class="cerrar-sesion">Cerrar sesión</a>
   </aside>
 
   <div class="contenido">
@@ -30,7 +30,7 @@
       <div class="barra-busqueda">
         <input type="text" placeholder="Buscar usuario...">
       </div>
-      <a href="./formularios/registrarse" class="boton-registrar">Registrar nuevo usuario</a>
+      <a href="{{ url('/usuario/actregistro') }}" class="boton-registrar">Registrar nuevo usuario</a>
     </div>
 
     <table>
@@ -49,10 +49,9 @@
           <td>12345678</td>
           <td class="acciones">
             <button class="ver-mas" data-id="1">Ver más</button>
-              <button class="actualizar" onclick="location.href='./formularios_actualizacion/registrarse_actualizar'">Actualizar</button>
+            <button class="actualizar" onclick="location.href='#'">Actualizar</button>
             <button class="eliminar">Eliminar</button>
           </td>
-        </tr>
         </tr>
       </tbody>
     </table>
@@ -78,25 +77,6 @@
     </ul>
   </div>
 
-  <script>
-    const btnVerMas = document.querySelectorAll('.ver-mas');
-    const ventanas = document.querySelectorAll('.ventana-flotante');
-
-    btnVerMas.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const id = btn.dataset.id;
-        const ventana = document.getElementById('detalle-usuario-' + id);
-        ventana.classList.add('active');
-      });
-    });
-
-    window.addEventListener('click', function(e) {
-      ventanas.forEach(ventana => {
-        if (ventana.classList.contains('active') && !ventana.contains(e.target) && !e.target.classList.contains('ver-mas')) {
-          ventana.classList.remove('active');
-        }
-      });
-    });
-  </script>
+  <script src="{{ asset('js/usuarios.js') }}"></script>
 </body>
 </html>

@@ -10,14 +10,14 @@
 
 <header>
   <div class="logo" tabindex="0" aria-label="Logo Escuela de Fútbol Pinze">
-    <img src="imagenes/logo.jpg" alt="Logo Escuela de Fútbol Pinze" />
+    <img src="{{ asset('imagenes/logo.jpg') }}" alt="Logo Escuela de Fútbol Pinze" />
     <h2>Escuela de Fútbol Pinze</h2>
   </div>
   <nav>
     <a href="#inicio">⚽ Inicio</a>
-    <a href="servicios">🥅 Servicios</a>
-    <a href="nosotros">🏆 Nosotros</a>
-    <a href="./formularios/inicio_sesion" class="iniciar-sesion">Iniciar sesión</a>
+    <a href="{{ url('/servicios') }}">🥅 Servicios</a>
+    <a href="{{ url('/nosotros') }}">🏆 Nosotros</a>
+    <a href="{{ url('/login') }}" class="iniciar-sesion">Iniciar sesión</a>
   </nav>
 </header>
 
@@ -26,31 +26,31 @@
   <hr class="hero-separator">
   <p>¡Formamos campeones dentro y fuera de la cancha! <br> Nuestra misión es fomentar la pasión por el fútbol, el trabajo en equipo y los valores en cada uno de nuestros jugadores, desde los más pequeños hasta los grandes.</p>
   <div class="hero-gallery" aria-label="Imágenes de la escuela">
-    <img src="imagenes/bienvenida1.PNG" alt="Niños entrenando en cancha" />
-    <img src="imagenes/bienvenida2.PNG" alt="Equipo celebrando gol" />
-    <img src="imagenes/bienvenida3.PNG" alt="Torneo escolar" />
+    <img src="{{ asset('imagenes/bienvenida1.PNG') }}" alt="Niños entrenando en cancha" />
+    <img src="{{ asset('imagenes/bienvenida2.PNG') }}" alt="Equipo celebrando gol" />
+    <img src="{{ asset('imagenes/bienvenida3.PNG') }}" alt="Torneo escolar" />
   </div>
 </section>
 
 <section class="galeria" aria-label="Galería de imágenes">
-  <div class="item" data-imgs="imagenes/ubicación.jpg" data-text="Ubicación">
-    <img src="imagenes/letrap.PNG" alt="Ubicación" />
+  <div class="item" data-imgs="{{ asset('imagenes/ubicación.jpg') }}" data-text="Ubicación">
+    <img src="{{ asset('imagenes/letrap.PNG') }}" alt="Ubicación" />
     <p>Ubicación</p>
   </div>
-  <div class="item" data-imgs="imagenes/entrenamiento1.PNG,imagenes/entrenamiento2.PNG,imagenes/entrenamiento3.PNG" data-text="Entrenamientos">
-    <img src="imagenes/I.PNG" alt="Entrenamientos" />
+  <div class="item" data-imgs="{{ asset('imagenes/entrenamiento1.PNG') }},{{ asset('imagenes/entrenamiento2.PNG') }},{{ asset('imagenes/entrenamiento3.PNG') }}" data-text="Entrenamientos">
+    <img src="{{ asset('imagenes/I.PNG') }}" alt="Entrenamientos" />
     <p>Entrenamientos</p>
   </div>
-  <div class="item" data-imgs="imagenes/destacados.PNG" data-text="Destacados">
-    <img src="imagenes/n.PNG" alt="Destacados" />
+  <div class="item" data-imgs="{{ asset('imagenes/destacados.PNG') }}" data-text="Destacados">
+    <img src="{{ asset('imagenes/n.PNG') }}" alt="Destacados" />
     <p>Destacados</p>
   </div>
-  <div class="item" data-imgs="imagenes/anuncio.PNG" data-text="Anuncios">
-    <img src="imagenes/Z.PNG" alt="Anuncios" />
+  <div class="item" data-imgs="{{ asset('imagenes/anuncio.PNG') }}" data-text="Anuncios">
+    <img src="{{ asset('imagenes/Z.PNG') }}" alt="Anuncios" />
     <p>Anuncios</p>
   </div>
-  <div class="item" data-imgs="imagenes/esperamos.PNG" data-text="Te esperamos!">
-    <img src="imagenes/E.PNG" alt="Te esperamos!" />
+  <div class="item" data-imgs="{{ asset('imagenes/esperamos.PNG') }}" data-text="Te esperamos!">
+    <img src="{{ asset('imagenes/E.PNG') }}" alt="Te esperamos!" />
     <p>Te esperamos!</p>
   </div>
 </section>
@@ -59,45 +59,45 @@
   <h3>Nuestro Compromiso</h3>
   <p>En la Escuela de Fútbol Pinze trabajamos cada día para formar no solo grandes jugadores, sino también excelentes personas. Creemos en el juego limpio, la amistad y el respeto dentro y fuera de la cancha.</p>
 
-  <div class="galeria-tarjetas">
-    <div class="tarjeta" tabindex="0">
-      <img src="imagenes/compromiso4.PNG" alt="Compromiso con los pequeños">
-      <div class="info">Nuestro mayor orgullo son los más pequeños, a quienes guiamos con paciencia y alegría para que crezcan felices y apasionados por el fútbol.</div>
-    </div>
-    <div class="tarjeta" tabindex="0">
-      <img src="imagenes/compromiso5.PNG" alt="Compromiso de disciplina">
-      <div class="info">Fomentamos la disciplina, el respeto y el liderazgo, para que cada jugador sea un ejemplo dentro y fuera de la cancha.</div>
-    </div>
-    <div class="tarjeta" tabindex="0">
-      <img src="imagenes/comrpromiso6.PNG" alt="Compromiso de campeones">
-      <div class="info">Entrenamos con pasión y entrega: trabajamos duro para salir campeones y enorgullecer nuestro escudo.</div>
-    </div>
-    <div class="tarjeta" tabindex="0">
-      <img src="imagenes/compromiso8.PNG" alt="Compromiso de apoyo">
-      <div class="info">Apoyamos el talento y esfuerzo de cada jugador para que alcance su mejor versión.</div>
-    </div>
+<div class="galeria-tarjetas">
+  <div class="tarjeta" tabindex="0">
+    <img src="{{ asset('imagenes/compromiso4.PNG') }}" alt="Compromiso con los pequeños">
+    <div class="info">Nuestro mayor orgullo son los más pequeños, a quienes guiamos con paciencia y alegría para que crezcan felices y apasionados por el fútbol.</div>
   </div>
+  <div class="tarjeta" tabindex="0">
+    <img src="{{ asset('imagenes/compromiso5.PNG') }}" alt="Compromiso de disciplina">
+    <div class="info">Fomentamos la disciplina, el respeto y el liderazgo, para que cada jugador sea un ejemplo dentro y fuera de la cancha.</div>
+  </div>
+  <div class="tarjeta" tabindex="0">
+    <img src="{{ asset('imagenes/comrpromiso6.PNG') }}" alt="Compromiso de campeones">
+    <div class="info">Entrenamos con pasión y entrega: trabajamos duro para salir campeones y enorgullecer nuestro escudo.</div>
+  </div>
+  <div class="tarjeta" tabindex="0">
+    <img src="{{ asset('imagenes/compromiso8.PNG') }}" alt="Compromiso de apoyo">
+    <div class="info">Apoyamos el talento y esfuerzo de cada jugador para que alcance su mejor versión.</div>
+  </div>
+</div>
 
   <hr>
 
   <div class="galeria-tarjetas">
     <div class="tarjeta" tabindex="0">
-      <img src="imagenes/compromiso1.PNG" alt="Respeto y humildad">
+      <img src="{{ asset('imagenes/compromiso1.PNG') }}" alt="Respeto y humildad">
       <div class="info">Formamos jugadores con respeto, disciplina y humildad, dentro y fuera del campo.</div>
     </div>
     <div class="tarjeta" tabindex="0">
-      <img src="imagenes/compromiso2.PNG" alt="Crecimiento en equipo">
+      <img src="{{ asset('imagenes/compromiso2.PNG') }}" alt="Crecimiento en equipo">
       <div class="info">Creamos un ambiente donde cada niño se supera y aprende a trabajar en equipo.</div>
     </div>
     <div class="tarjeta" tabindex="0">
-      <img src="imagenes/compromiso3.PNG" alt="Pasión por el fútbol">
+      <img src="{{ asset('imagenes/compromiso3.PNG') }}" alt="Pasión por el fútbol">
       <div class="info">Nuestra pasión impulsa el esfuerzo diario, formando futuros campeones.</div>
     </div>
     <div class="tarjeta" tabindex="0">
-      <img src="imagenes/compromiso7.PNG" alt="Fomento de jugadoras">
+      <img src="{{ asset('imagenes/compromiso7.PNG') }}" alt="Fomento de jugadoras">
       <div class="info">Fomentamos el talento de nuestras jugadoras, impulsando la igualdad y el respeto en cada entrenamiento.</div>
-    </div>
   </div>
+</div>
 </section>
 
 <footer>
@@ -124,60 +124,7 @@
   </div>
 </div>
 
-<script>
-  const items = document.querySelectorAll('.galeria .item');
-  const modal = document.querySelector('.modal');
-  const modalImg = document.getElementById('modal-img');
-  const modalDesc = document.getElementById('modal-desc');
-  const modalClose = document.querySelector('.modal-close');
-  const modalPrev = document.querySelector('.modal-prev');
-  const modalNext = document.querySelector('.modal-next');
-  let currentImages = [], currentIndex = 0;
-
-  items.forEach(item => {
-    item.addEventListener('click', () => {
-      currentImages = item.dataset.imgs.split(',').map(img => img.trim());
-      currentIndex = 0;
-      showImage();
-      modalDesc.textContent = item.dataset.text;
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  function showImage() {
-    modalImg.src = currentImages[currentIndex];
-    modalImg.alt = modalDesc.textContent + ' ' + (currentIndex + 1);
-  }
-
-  modalPrev.addEventListener('click', () => {
-    if (currentIndex > 0) {
-      currentIndex--;
-      showImage();
-    }
-  });
-
-  modalNext.addEventListener('click', () => {
-    if (currentIndex < currentImages.length - 1) {
-      currentIndex++;
-      showImage();
-    }
-  });
-
-  modalClose.addEventListener('click', closeModal);
-  modal.addEventListener('click', e => {
-    if (e.target === modal) closeModal();
-  });
-
-  window.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
-  });
-
-  function closeModal() {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-</script>
+<script src="{{ asset('js/main.js') }}"></script>
 
 </body>
 </html>

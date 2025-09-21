@@ -4,34 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pagos - Escuela de Fútbol Pinze</title>
-  <link rel="stylesheet" href="css/style_pag_prin.css">
-  <link rel="stylesheet" href="css/stylepag.css">
+  <link rel="stylesheet" href="{{ asset('css/style_pag_prin.css') }}">
+<link rel="stylesheet" href="{{ asset('css/stylepag.css') }}">
 </head>
 <body>
   <aside class="menu">
-    <a href="./pagina_original" class="logo" aria-label="Logo Escuela de Fútbol Pinze">
-      <img src="imagenes/logo.jpg" alt="Logo Escuela de Fútbol Pinze" />
+    <a href="{{ url('/pagina_original') }}" class="logo" aria-label="Logo Escuela de Fútbol Pinze">
+      <img src="{{ asset('imagenes/logo.jpg') }}" alt="Logo Escuela de Fútbol Pinze">
     </a>
 
     <h2>⚽ Menú ⚽</h2>
     <ul>
       <li>
-        <a href="./registropag">Usuarios</a>
+        <a href="{{ url('/usuario/registropag') }}">Usuarios</a>
       <li>
-        <a href="./entrenopag">Entrenamiento</a>
+        <a href="{{ url('/entrenamientopag') }}">Entrenamiento</a>
       <li>
-        <a href="./inventariopag">Inventario</a>
+        <a href="{{ url('/inventariopag') }}">Inventario</a>
       </li>
       <li>
-        <a href="./rendimientopag">Rendimiento</a>
+        <a href="{{ url('/rendimientopag') }}">Rendimiento</a>
       </li>
       <li>
-        <a href="./matriculapag">Matrícula</a>
+        <a href="{{ url('/matriculapag') }}">Matrícula</a>
       <li>
-        <a href="./pagopag">Pago</a>
+        <a href="{{ url('/pagoregistro') }}">Pago</a>
       </li>
     </ul>
-    <a href="./index" class="cerrar-sesion">Cerrar sesión</a>
+    <a href="{{ url('/') }}" class="cerrar-sesion">Cerrar sesión</a>
   </aside>
 
   <div class="contenido">
@@ -39,7 +39,7 @@
       <div class="barra-busqueda">
         <input type="text" placeholder="Buscar pago...">
       </div>
-      <a href="./formularios/pago" class="boton-registrar">Registrar pago</a>
+      <a href="{{ url('/pago') }}" class="boton-registrar">Registrar pago</a>
     </div>
 
     <table>
@@ -67,7 +67,21 @@
           <td>101</td>
           <td>205</td>
           <td class="acciones">
-            <button class="actualizar" onclick="location.href='./formularios_actualizacion/pago_actualizar'">Actualizar</button>
+            <button class="actualizar">Actualizar</button>
+            <button class="eliminar">Eliminar</button>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Mensualidad</td>
+          <td>2025-06-30</td>
+          <td>Tarjeta</td>
+          <td>50.00</td>
+          <td>Pago parcial</td>
+          <td>102</td>
+          <td>206</td>
+          <td class="acciones">
+            <button class="actualizar">Actualizar</button>
             <button class="eliminar">Eliminar</button>
           </td>
         </tr>

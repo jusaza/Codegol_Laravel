@@ -9,10 +9,10 @@
 <body>
 
   <header>
-    <a href="../pagopag" class="logo" aria-label="Logo Escuela de Fútbol Pinze">
+    <a href="../pagopag.html" class="logo" aria-label="Logo Escuela de Fútbol Pinze">
       <img src="../imagenes/logo.jpg" alt="Logo Escuela de Fútbol Pinze" />
     </a>
-    <a href="../pagopag" class="volver">Volver</a>
+    <a href="../pagopag.html" class="volver">Volver</a>
   </header>
 
   <div class="login-box" role="main" aria-label="Formulario de pago">

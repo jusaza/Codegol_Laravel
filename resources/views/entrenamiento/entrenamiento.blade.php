@@ -9,15 +9,15 @@
 <body>
 
 <header>
-  <a href="../entrenopag" class="logo" aria-label="Logo Escuela de Fútbol Pinze">
+  <a href="../entrenopag.html" class="logo" aria-label="Logo Escuela de Fútbol Pinze">
     <img src="../imagenes/logo.jpg" alt="Logo Escuela de Fútbol Pinze">
   </a>
-  <a href="../entrenopag" class="volver">Volver</a>
+  <a href="../entrenopag.html" class="volver">Volver</a>
 </header>
 
 <div class="login-box" role="main" aria-label="Formulario de registro de entrenamiento">
   <h1>Entrenamiento</h1>
-  <form action="../entrenopag" method="GET">
+  <form action="../entrenopag.html" method="GET">
     <div>
       <label for="descripcion">Descripción</label>
       <input type="text" id="descripcion" name="descripcion" placeholder="Ingrese la Descripción" required>
