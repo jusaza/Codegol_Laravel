@@ -73,5 +73,4 @@
       Todos los derechos reservados 2025 Escuela de Fútbol Pinze
     </footer>
   </div>
-</body>
-</html>
+@endsection

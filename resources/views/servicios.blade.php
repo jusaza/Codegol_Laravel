@@ -1,25 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Escuela de Fútbol Pinze - Servicios</title>
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
-</head>
-<body>
+@extends('layouts.app')
 
-<header>
-  <div class="logo" tabindex="0" aria-label="Logo Escuela de Fútbol Pinze">
-    <img src="{{ asset('imagenes/logo.jpg') }}" alt="Logo Escuela de Fútbol Pinze" />
-    <h2>Escuela de Fútbol Pinze</h2>
-  </div>
-  <nav>
-    <a href="{{ url('/') }}">⚽ Inicio</a>
-    <a href="{{ url('/servicios') }}">🥅 Servicios</a>
-    <a href="{{ url('/nosotros') }}">🏆 Nosotros</a>
-    <a href="{{ url('/login') }}" class="iniciar-sesion">Iniciar sesión</a>
-  </nav>
-</header>
+@section('title', 'Servicios')
+
+@section('content')
 
 <main>
     <section class="hero" id="sobre" role="banner" aria-label="Sobre nosotros">
@@ -69,14 +52,4 @@
   </section>
 </main>
 
-<footer>
-  <p>&copy; 2025 Escuela de Fútbol Pinze. Todos los derechos reservados.</p>
-  <nav class="redes" aria-label="Redes sociales">
-    <a href="https://www.facebook.com/PinzeColombia/" target="_blank" rel="noopener noreferrer">Facebook</a> |
-    <a href="https://www.instagram.com/pinzecolombia?igsh=MWYxdWNzcThsa2pvYg%3D%3D" target="_blank" rel="noopener noreferrer">Instagram</a> |
-    <a href="#" target="_blank" rel="noopener noreferrer">YouTube</a>
-  </nav>
-</footer>
-
-</body>
-</html>
+@endsection

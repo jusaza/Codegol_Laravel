@@ -1,20 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Entrenamiento - Escuela de Fútbol Pinze</title>
-  <link rel="stylesheet" href="../css/style_forms.css">
-</head>
-<body>
 
-<header>
-  <a href="../entrenopag.html" class="logo" aria-label="Logo Escuela de Fútbol Pinze">
-    <img src="../imagenes/logo.jpg" alt="Logo Escuela de Fútbol Pinze">
-  </a>
-  <a href="../entrenopag.html" class="volver">Volver</a>
-</header>
-
+@extends('layouts.form')
+@section('title', 'Entrenamiento')
+@section('content')
+ 
 <div class="login-box" role="main" aria-label="Formulario de registro de entrenamiento">
   <h1>Entrenamiento</h1>
   <form action="../entrenopag.html" method="GET">
@@ -50,6 +38,4 @@
             <button type="submit">Guardar entrenamiento</button>
   </form>
 </div>
-
-</body>
-</html>
+@endsection

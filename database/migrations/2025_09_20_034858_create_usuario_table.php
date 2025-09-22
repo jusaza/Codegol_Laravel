@@ -27,17 +27,24 @@ public function up(): void
         $table->enum('grupo_sanguineo', ['a+','a-','b+','b-','ab+','ab-','o+','o-']);
         $table->binary('foto_perfil')->nullable();
         $table->boolean('estado')->default(true);
-        $table->unsignedInteger('id_usuario_registro')->default(1);
+
+        // columnas para FK
+        $table->unsignedInteger('id_usuario_registro')->nullable();
         $table->unsignedInteger('id_responsable')->nullable();
     });
 
+    // 👇 Ahora sí, foreign keys en un segundo paso
     Schema::table('usuario', function (Blueprint $table) {
         $table->foreign('id_usuario_registro', 'fk_usuario_registrado_por')
-              ->references('id_usuario')->on('usuario');
+              ->references('id_usuario')->on('usuario')
+              ->nullOnDelete();
+
         $table->foreign('id_responsable', 'fk_useresponsable')
-              ->references('id_usuario')->on('usuario');
+              ->references('id_usuario')->on('usuario')
+              ->nullOnDelete();
     });
 }
+
 
 
     /**

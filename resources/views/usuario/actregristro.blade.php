@@ -1,20 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Registrarse - Escuela de Fútbol Pinze</title>
-  <link rel="stylesheet" href="../css/style_forms.css">
-</head>
-<body>
-
-  <header>
-    <a href="../registropag.html" class="logo" aria-label="Logo Escuela de Fútbol Pinze">
-      <img src="../imagenes/logo.jpg" alt="Logo Escuela de Fútbol Pinze" />
-    </a>
-    <a href="../registropag.html" class="volver">Volver</a>
-  </header>
-
+@extends('layouts.form')
+@section('title', 'Usuarios')
+@section('content')
   <div class="login-box" role="main" aria-label="Formulario de registro">
     <h1>Actualización de datos </h1>
 
@@ -117,5 +103,4 @@
 
   </div>
 
-</body>
-</html>
+@endsection

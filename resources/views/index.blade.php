@@ -1,25 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Escuela de Fútbol Pinze</title>
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-<body>
+@extends('layouts.app')
 
-<header>
-  <div class="logo" tabindex="0" aria-label="Logo Escuela de Fútbol Pinze">
-    <img src="{{ asset('imagenes/logo.jpg') }}" alt="Logo Escuela de Fútbol Pinze" />
-    <h2>Escuela de Fútbol Pinze</h2>
-  </div>
-  <nav>
-    <a href="#inicio">⚽ Inicio</a>
-    <a href="{{ url('/servicios') }}">🥅 Servicios</a>
-    <a href="{{ url('/nosotros') }}">🏆 Nosotros</a>
-    <a href="{{ url('/login') }}" class="iniciar-sesion">Iniciar sesión</a>
-  </nav>
-</header>
+@section('title', 'Inicio')
+
+@section('content')
 
 <section class="hero" id="inicio" role="banner" aria-label="Bienvenida">
   <h1>Bienvenido a la Escuela de Fútbol Pinze</h1>
@@ -65,9 +48,10 @@
     <div class="info">Nuestro mayor orgullo son los más pequeños, a quienes guiamos con paciencia y alegría para que crezcan felices y apasionados por el fútbol.</div>
   </div>
   <div class="tarjeta" tabindex="0">
-    <img src="{{ asset('imagenes/compromiso5.PNG') }}" alt="Compromiso de disciplina">
-    <div class="info">Fomentamos la disciplina, el respeto y el liderazgo, para que cada jugador sea un ejemplo dentro y fuera de la cancha.</div>
+    <img src="{{ asset('imagenes/compromiso7.PNG') }}" alt="Fomento de jugadoras">
+    <div class="info">Fomentamos el talento de nuestras jugadoras, impulsando la igualdad y el respeto en cada entrenamiento.</div>
   </div>
+
   <div class="tarjeta" tabindex="0">
     <img src="{{ asset('imagenes/comrpromiso6.PNG') }}" alt="Compromiso de campeones">
     <div class="info">Entrenamos con pasión y entrega: trabajamos duro para salir campeones y enorgullecer nuestro escudo.</div>
@@ -100,19 +84,6 @@
 </div>
 </section>
 
-<footer>
-  <p>&copy; 2025 Escuela de Fútbol Pinze. Todos los derechos reservados.</p>
-  <nav class="redes" aria-label="Redes sociales">
-    <a href="https://www.facebook.com/PinzeColombia/" target="_blank" rel="noopener">Facebook</a> 
-    <a href="https://www.instagram.com/pinzecolombia/" target="_blank" rel="noopener">Instagram</a> 
-    <a href="https://goo.gl/maps/sUog16biK1m6GBp16" target="_blank" rel="noopener">Ubicación</a>
-    <br>
-    <a href="#">Whatsapp</a>
-    <a href="#">X</a>
-    <a href="#">Youtube</a>
-  </nav>
-</footer>
-
 <!-- Modal -->
 <div class="modal" role="dialog" aria-modal="true">
   <div class="modal-content">
@@ -126,5 +97,4 @@
 
 <script src="{{ asset('js/main.js') }}"></script>
 
-</body>
-</html>
+@endsection

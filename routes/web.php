@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InventarioController;
 
 Route::get('/', function () {
     return view('index');
@@ -14,7 +15,7 @@ Route::view('/login', 'auth.login');
 Route::view('/entrenamiento', 'entrenamiento.entrenamiento');
 Route::view('/entrenamientopag', 'entrenamiento.entrenopag');
 
-Route::view('/inventario', 'inventario.inventario');
+Route::view('/inventario', 'inventario.inventarios');
 Route::view('/inventariopag', 'inventario.inventariopag');
 
 Route::view('/matricula', 'matricula.matricula');
@@ -30,3 +31,7 @@ Route::view('/usuario/actregistro', 'usuario.actregristro');
 Route::view('/usuario/registropag', 'usuario.registropag');
 
 Route::view('/pagina_original', 'pagina_original');
+
+//Controladores 
+
+Route::resource('inventario', InventarioController::class);

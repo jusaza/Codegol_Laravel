@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Matrícula - Escuela de Fútbol Pinze</title>
-  <link rel="stylesheet" href="../css/style_forms.css" />
-</head>
-<body>
+@extends('layouts.form')
+@section('title', 'Matricula')
+@section('content')
 
   <header>
     <a href="../matriculapag.html" class="logo" aria-label="Logo Escuela de Fútbol Pinze">
@@ -67,5 +61,4 @@
     </form>
   </div>
 
-</body>
-</html>
+@endsection

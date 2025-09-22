@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pago - Escuela de Fútbol Pinze</title>
-  <link rel="stylesheet" href="../css/style_forms.css">
-</head>
-<body>
-
-  <header>
-    <a href="../pagopag.html" class="logo" aria-label="Logo Escuela de Fútbol Pinze">
-      <img src="../imagenes/logo.jpg" alt="Logo Escuela de Fútbol Pinze" />
-    </a>
-    <a href="../pagopag.html" class="volver">Volver</a>
-  </header>
+@extends('layouts.form')
+@section('title', 'Pago')
+@section('content')
 
   <div class="login-box" role="main" aria-label="Formulario de pago">
     <h1>Pago</h1>
@@ -69,5 +56,4 @@
     </form>
   </div>
 
-</body>
-</html>
+@endsection
