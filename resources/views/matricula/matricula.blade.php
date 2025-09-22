@@ -2,6 +2,7 @@
 @section('title', 'Matricula')
 @section('content')
 
+  
 
   <div class="login-box" role="main" aria-label="Formulario de matrícula">
     <h1>Matrícula</h1>

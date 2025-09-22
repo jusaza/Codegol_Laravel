@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InventarioController;
+use App\Http\Controllers\MatriculaController;
 
 Route::get('/', function () {
     return view('index');
@@ -15,7 +16,7 @@ Route::view('/login', 'auth.login');
 Route::view('/entrenamiento', 'entrenamiento.entrenamiento');
 Route::view('/entrenamientopag', 'entrenamiento.entrenopag');
 
-Route::view('/inventario', 'inventario.inventario');
+Route::view('/inventario', 'inventario.inventarios');
 Route::view('/inventariopag', 'inventario.inventariopag');
 
 Route::view('/matricula', 'matricula.matricula');
@@ -32,6 +33,9 @@ Route::view('/usuario/registropag', 'usuario.registropag');
 
 Route::view('/pagina_original', 'pagina_original');
 
+
 //Controladores 
 
 Route::resource('inventario', InventarioController::class);
+Route::resource('matriculas1',MatriculaController::class);
+Route::get('/matriculapag', [App\Http\Controllers\MatriculaController::class, 'pag'])->name('matriculapag');
