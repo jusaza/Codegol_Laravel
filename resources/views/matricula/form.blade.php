@@ -21,11 +21,7 @@
             <input type="text" name="fecha_fin" class="form-control @error('fecha_fin') is-invalid @enderror" value="{{ old('fecha_fin', $matricula?->fecha_fin) }}" id="fecha_fin" placeholder="Fecha Fin">
             {!! $errors->first('fecha_fin', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
-        <div class="form-group mb-2 mb20">
-            <label for="estado" class="form-label">{{ __('') }}</label>
-            <input type="" name="estado" class="form-control @error('estado') is-invalid @enderror" value="{{ old('estado', $matricula?->estado) }}" id="estado" placeholder="Estado">
-            {!! $errors->first('estado', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
-        </div>
+
         <div class="form-group mb-2 mb20">
             <label for="observaciones" class="form-label">{{ __('Observaciones') }}</label>
             <input type="text" name="observaciones" class="form-control @error('observaciones') is-invalid @enderror" value="{{ old('observaciones', $matricula?->observaciones) }}" id="observaciones" placeholder="Observaciones">

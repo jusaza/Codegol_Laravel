@@ -44,7 +44,7 @@
             <td>{{ $matricula->id_jugador }}</td>
             <td>{{ $matricula->id_usuario }}</td>
             <td class="acciones">
-              <a href="{{ route('matriculas1.edit', $matricula->id_matricula) }}" class="actualizar">Actualizar</a>
+              <button class="actualizar"><a href="{{ route('matriculas1.edit', $matricula->id_matricula) }}"  style= "color:white; text-decoration:none;">Actualizar</a></button>
 
               <form action="{{ route('matriculas1.destroy', $matricula->id_matricula) }}" method="POST" style="display:inline">
                 @csrf

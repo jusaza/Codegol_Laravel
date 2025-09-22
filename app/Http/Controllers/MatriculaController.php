@@ -39,7 +39,7 @@ class MatriculaController extends Controller
     {
         Matricula::create($request->validated());
 
-        return Redirect::route('matriculapag.')
+        return Redirect::route('matriculapag')
             ->with('success', 'Matricula created successfully.');
     }
 
@@ -71,7 +71,7 @@ class MatriculaController extends Controller
     $matricula = Matricula::findOrFail($id);
     $matricula->update($request->validated());
 
-    return Redirect::route('matriculas1.index')
+    return Redirect::route('matriculapag')
         ->with('success', 'Matricula updated successfully');
 }   
 
@@ -79,7 +79,7 @@ class MatriculaController extends Controller
     {
         Matricula::find($id)->delete();
 
-        return Redirect::route('matriculas1.index')
+        return Redirect::route('matriculapag')
             ->with('success', 'Matricula deleted successfully');
     }
 
