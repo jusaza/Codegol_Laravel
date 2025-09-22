@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InventarioController;
+use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\MatriculaController;
 
 Route::get('/', function () {
@@ -36,6 +37,7 @@ Route::view('/pagina_original', 'pagina_original');
 
 //Controladores 
 
+Route::resource('usuarios', UsuarioController::class);
 Route::resource('inventario', InventarioController::class);
 Route::resource('matriculas1',MatriculaController::class);
 Route::get('/matriculapag', [App\Http\Controllers\MatriculaController::class, 'pag'])->name('matriculapag');
