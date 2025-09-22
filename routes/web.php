@@ -15,7 +15,7 @@ Route::view('/login', 'auth.login');
 Route::view('/entrenamiento', 'entrenamiento.entrenamiento');
 Route::view('/entrenamientopag', 'entrenamiento.entrenopag');
 
-Route::view('/inventario', 'inventario.inventarios');
+Route::view('/inventario', 'inventario.inventario');
 Route::view('/inventariopag', 'inventario.inventariopag');
 
 Route::view('/matricula', 'matricula.matricula');
