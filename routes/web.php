@@ -38,6 +38,8 @@ Route::view('/pagina_original', 'pagina_original');
 
 //Controladores 
 
+Route::resource('usuarios', UsuarioController::class);
+
 Route::resource('entrenamientos', EntrenamientoController::class);
 Route::get('/entrenamientopag', [EntrenamientoController::class, 'index'])->name('entrenamientos.page');
 
