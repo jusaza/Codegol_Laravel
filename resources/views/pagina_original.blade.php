@@ -30,7 +30,7 @@
         <a href="{{ url('/matriculapag') }}">Matrícula</a>
       </li>
       <li>
-        <a href="{{ url('/pagoregistro') }}">Pago</a>
+        <a href="{{ url('/pago') }}">Pago</a>
       </li>
     </ul>
     <a href="{{ url('/') }}" class="cerrar-sesion">Cerrar sesión</a>
