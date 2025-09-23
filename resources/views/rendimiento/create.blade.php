@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.form')
 
 @section('template_title')
     {{ __('Create') }} Rendimiento

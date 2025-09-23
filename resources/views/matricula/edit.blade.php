@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.form')
 
 @section('template_title')
     {{ __('Update') }} Matricula
@@ -11,7 +11,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Update') }} Matricula</span>
+                        <span class="card-title">{{ __('Actualizar') }} Matricula</span>
                     </div>
                     <div class="card-body bg-white">
                         <form method="POST" action="{{ route('matriculas1.update', $matricula->id_matricula) }}"  role="form" enctype="multipart/form-data">
