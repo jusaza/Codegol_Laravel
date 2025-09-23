@@ -1,11 +1,4 @@
 
-@extends('layouts.form')
-@section('title', 'Entrenamiento')
-@section('content')
- 
-<div class="login-box" role="main" aria-label="Formulario de registro de entrenamiento">
-  <h1>Entrenamiento</h1>
-  <form action="../entrenopag.html" method="GET">
     <div>
       <label for="descripcion">Descripción</label>
       <input type="text" id="descripcion" name="descripcion" placeholder="Ingrese la Descripción" required>
@@ -36,6 +29,4 @@
     </div>  
  
             <button type="submit">Guardar entrenamiento</button>
-  </form>
-</div>
-@endsection
+
