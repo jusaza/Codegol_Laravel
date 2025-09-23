@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\MatriculaController;
+use App\Http\Controllers\RendimientoController;
 
 Route::get('/', function () {
     return view('index');
@@ -41,3 +42,4 @@ Route::resource('usuarios', UsuarioController::class);
 Route::resource('inventario', InventarioController::class);
 Route::resource('matriculas1',MatriculaController::class);
 Route::get('/matriculapag', [App\Http\Controllers\MatriculaController::class, 'pag'])->name('matriculapag');
+Route::resource('rendimientos', RendimientoController::class);
