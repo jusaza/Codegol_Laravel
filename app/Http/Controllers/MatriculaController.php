@@ -40,7 +40,7 @@ class MatriculaController extends Controller
         Matricula::create($request->validated());
 
         return Redirect::route('matriculapag')
-            ->with('success', 'Matricula created successfully.');
+            ->with('success', '');
     }
 
     /**
@@ -72,7 +72,7 @@ class MatriculaController extends Controller
     $matricula->update($request->validated());
 
     return Redirect::route('matriculapag')
-        ->with('success', 'Matricula updated successfully');
+        ->with('success', '');
 }   
 
     public function destroy($id): RedirectResponse
@@ -80,7 +80,7 @@ class MatriculaController extends Controller
         Matricula::find($id)->delete();
 
         return Redirect::route('matriculapag')
-            ->with('success', 'Matricula deleted successfully');
+            ->with('success', '');
     }
 
         public function pag()

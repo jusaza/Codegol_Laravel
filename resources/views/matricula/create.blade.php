@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.form')
 
 @section('template_title')
     {{ __('Create') }} Matricula
@@ -11,7 +11,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Create') }} Matricula</span>
+                        <span class="card-title">{{ __('Registrar  Matricula') }}</span>
                     </div>
                     <div class="card-body bg-white">
                         <form method="POST" action="{{ route('matriculas1.store') }}"  role="form" enctype="multipart/form-data">
