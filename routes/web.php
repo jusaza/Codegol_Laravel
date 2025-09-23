@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EntrenamientoController;
+//use App\Http\Controllers\InventarioController;
+use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\MatriculaController;
 
 Route::get('/', function () {
