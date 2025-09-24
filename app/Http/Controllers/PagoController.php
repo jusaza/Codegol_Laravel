@@ -18,7 +18,6 @@ class PagoController extends Controller
     {
         $pagos = Pago::paginate();
 
-        
         return view('pago.index', compact('pagos'))
             ->with('i', ($request->input('page', 1) - 1) * $pagos->perPage());
     }
@@ -28,7 +27,6 @@ class PagoController extends Controller
      */
     public function create(): View
     {
-        // Crea un objeto vacío para el form y carga datos de selects si los necesitas
         $pago       = new Pago();
         $usuarios   = \App\Models\Usuario::all();
         $matriculas = \App\Models\Matricula::all();

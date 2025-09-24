@@ -11,7 +11,7 @@ class PagoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,15 @@ class PagoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'concepto_pago'  => 'required|string|max:255',
+            'fecha_pago'     => 'required|date',
+            'metodo_pago'    => 'required|string|max:100',
+            'valor_total'    => 'required|integer',
+            'observaciones'  => 'nullable|string',
+            'estado'         => 'required|boolean',
+            'id_usuario'     => 'required|integer|exists:usuario,id_usuario',
+            'id_responsable' => 'required|integer|exists:usuario,id_usuario',
+            'id_matricula'   => 'required|integer|exists:matricula,id_matricula',
         ];
     }
 }
