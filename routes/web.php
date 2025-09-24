@@ -26,8 +26,8 @@ Route::view('/inventariopag', 'inventario.inventariopag');
 Route::view('/matricula', 'matricula.matricula');
 Route::view('/matriculapag', 'matricula.matriculapag');
 
-Route::view('/rendimiento', 'rendimiento.rendimiento');
-Route::view('/rendimientopag', 'rendimiento.rendimientopag');
+Route::view('/rendimiento', 'rendimiento.rendimiento');//loco
+Route::view('/rendimientopag', 'rendimiento.rendimientopag');//locos
 
 
 Route::view('/usuario/actregistro', 'usuario.actregristro');
@@ -52,5 +52,5 @@ Route::get('/inventariopag', [App\Http\Controllers\InventarioController::class, 
 Route::resource('matriculas1',MatriculaController::class);
 Route::get('/matriculapag', [App\Http\Controllers\MatriculaController::class, 'pag'])->name('matriculapag');
 
-Route::resource('rendimientos', RendimientoController::class);
-Route::get('/rendimientopag', [App\Http\Controllers\RendimientoController::class, 'index'])->name('rendimientopag');
+Route::resource('rendimientos', RendimientoController::class);//locos3
+Route::get('/rendimientopag', [App\Http\Controllers\RendimientoController::class, 'index'])->name('rendimientopag');//locos4
