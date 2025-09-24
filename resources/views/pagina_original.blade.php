@@ -24,7 +24,7 @@
         <a href="{{ url('/inventariopag') }}">Inventario</a>
       </li>
       <li>
-        <a href="{{ url('/rendimientopag') }}">Rendimiento</a>
+        <a href="{{ url('/rendimiento/index') }}">Rendimiento</a>
       </li>
       <li>
         <a href="{{ url('/matriculapag') }}">Matrícula</a>

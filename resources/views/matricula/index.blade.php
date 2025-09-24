@@ -40,7 +40,6 @@
 									<th >Fecha Matricula</th>
 									<th >Fecha Inicio</th>
 									<th >Fecha Fin</th>
-									<th >Estado</th>
 									<th >Observaciones</th>
 									<th >Categoria</th>
 									<th >Nivel</th>
@@ -59,7 +58,6 @@
 										<td >{{ $matricula->fecha_matricula }}</td>
 										<td >{{ $matricula->fecha_inicio }}</td>
 										<td >{{ $matricula->fecha_fin }}</td>
-										<td >{{ $matricula->estado }}</td>
 										<td >{{ $matricula->observaciones }}</td>
 										<td >{{ $matricula->categoria }}</td>
 										<td >{{ $matricula->nivel }}</td>

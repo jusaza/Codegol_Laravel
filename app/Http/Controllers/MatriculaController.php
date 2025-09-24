@@ -16,9 +16,16 @@ class MatriculaController extends Controller
      */
     public function index(Request $request): View
     {
-        $matriculas = Matricula::paginate();
 
-        return view('matricula.index', compact('matriculas'))
+        $busqueda = $request->get('search'); // capturamos el texto del input
+
+        $matriculas = Matricula::when($busqueda, function ($query, $busqueda) {
+            return $query->where('fecha_inicio', 'like', '%' . $busqueda . '%')
+            ->orWhereRaw("LOWER(TRIM(observaciones)) LIKE ?", ['%' . strtolower(trim($busqueda)) . '%']);
+        })
+        ->paginate();
+
+        return view('matricula.matriculapag', compact('matriculas',"busqueda"))
             ->with('i', ($request->input('page', 1) - 1) * $matriculas->perPage());
     }
 
@@ -77,7 +84,12 @@ class MatriculaController extends Controller
 
     public function destroy($id): RedirectResponse
     {
-        Matricula::find($id)->delete();
+        $matricula = Matricula::find($id);
+
+        if ($matricula) {
+            $matricula->estado = false;   // 👈 se asigna manualmente
+            $matricula->save();
+        }
 
         return Redirect::route('matriculapag')
             ->with('success', '');

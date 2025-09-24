@@ -6,7 +6,7 @@
     <div class="barra-top">
       <div class="barra-busqueda">
         <form method="GET" action="{{ route('matriculas1.index') }}">
-          <input type="text" name="search" placeholder="Buscar matrícula..." value="{{ request('search') }}">
+          <input type="search" name="search" placeholder="Buscar matrícula por fecha de inicio o la observacion..." value="{{ request('search') }}">
         </form>
       </div>
       <a href="{{ route('matriculas1.create') }}" class="boton-registrar">Registrar matrícula</a>
@@ -25,7 +25,6 @@
           <th>Fecha Matrícula</th>
           <th>Fecha Inicio</th>
           <th>Fecha Fin</th>
-          <th>Estado</th>
           <th>Observaciones</th>
           <th>Categoria</th>
           <th>Nivel</th>
@@ -41,7 +40,6 @@
             <td>{{ $matricula->fecha_matricula }}</td>
             <td>{{ $matricula->fecha_inicio }}</td>
             <td>{{ $matricula->fecha_fin }}</td>
-            <td>{{ $matricula->estado ? 'Activo' : 'Inactivo' }}</td>
             <td>{{ $matricula->observaciones }}</td>
             <td>{{ $matricula->categoria }}</td>
             <td>{{ $matricula->nivel }}</td>

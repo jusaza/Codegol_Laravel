@@ -5,8 +5,8 @@ use App\Http\Controllers\EntrenamientoController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\MatriculaController;
-use App\Http\Controllers\RendimientoController;
 use App\Http\Controllers\PagoController;
+use App\Http\Controllers\RendimientoController;
 
 Route::get('/', function () {
     return view('index');
@@ -26,8 +26,8 @@ Route::view('/inventariopag', 'inventario.inventariopag');
 Route::view('/matricula', 'matricula.matricula');
 Route::view('/matriculapag', 'matricula.matriculapag');
 
-Route::view('/rendimiento', 'rendimiento.rendimiento');
-Route::view('/rendimientopag', 'rendimientos.rendimientopag');
+//Route::view('/rendimiento', 'rendimientos.rendimiento');
+//Route::view('/rendimientopag', 'rendimientos.rendimientopag');
 
 
 Route::view('/usuario/actregistro', 'usuario.actregristro');
@@ -40,7 +40,7 @@ Route::view('/pagina_original', 'pagina_original');
 
 Route::resource('usuarios', UsuarioController::class);
 Route::resource('pago', PagoController::class);
-//Route::get('/pago', [PagoController::class, 'index'])->name('pago.index');
+
 
 
 Route::resource('entrenamientos', EntrenamientoController::class);
@@ -51,4 +51,5 @@ Route::get('/inventariopag', [App\Http\Controllers\InventarioController::class, 
 
 Route::resource('matriculas1',MatriculaController::class);
 Route::get('/matriculapag', [App\Http\Controllers\MatriculaController::class, 'pag'])->name('matriculapag');
+
 Route::resource('rendimientos', RendimientoController::class);

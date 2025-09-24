@@ -23,15 +23,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property $id_entrenamiento
  * @property $id_usuario
  *
- * @property Usuario $usuario
  * @property Entrenamiento $entrenamiento
+ * @property Usuario $usuario
  * @property Matricula $matricula
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class Rendimiento extends Model
 {
-    
     protected $primaryKey = 'id_rendimiento';
     protected $perPage = 20;
     protected $table = 'rendimiento';
@@ -42,23 +41,23 @@ class Rendimiento extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['id_rendimiento', 'fecha_evaluacion', 'posicion', 'velocidad', 'potencia_tiro', 'defensa', 'regate', 'pase', 'tecnica', 'promedio', 'observaciones', 'estado', 'id_matricula', 'id_entrenamiento', 'id_usuario'];
+    protected $fillable = ['fecha_evaluacion', 'posicion', 'velocidad', 'potencia_tiro', 'defensa', 'regate', 'pase', 'tecnica','observaciones', 'estado', 'id_matricula', 'id_entrenamiento', 'id_usuario'];
 
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function usuario()
-    {
-        return $this->belongsTo(\App\Models\Usuario::class, 'id_usuario', 'id_usuario');
-    }
-    
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function entrenamiento()
     {
         return $this->belongsTo(\App\Models\Entrenamiento::class, 'id_entrenamiento', 'id_entrenamiento');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function usuario()
+    {
+        return $this->belongsTo(\App\Models\Usuario::class, 'id_usuario', 'id_usuario');
     }
     
     /**
