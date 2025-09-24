@@ -5,11 +5,17 @@
 <div class="contenido">
     <br>
     <div class="barra-top">
-        <div class="barra-busqueda">
-            <form method="GET" action="{{ route('entrenamientos.index') }}">
-                <input type="text" name="search" placeholder="Buscar entrenamiento..." value="{{ request('search') }}">
-            </form>
-        </div>
+<div class="barra-busqueda">
+    <form method="GET" action="{{ route('entrenamientos.index') }}">
+        <input 
+            type="search" 
+            name="busqueda" 
+            placeholder="Buscar por fecha o descripcion..." 
+            value="{{ request('busqueda') }}" 
+        />
+    </form>
+</div>
+
         <a href="{{ route('entrenamientos.create') }}" class="boton-registrar">Registrar entrenamiento</a>
     </div>
 
@@ -23,24 +29,26 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Descripcion</th>
                 <th>Fecha</th>
                 <th>Lugar</th>
                 <th>Hora Inicio</th>
                 <th>Hora Fin</th>
-                <th>Tipo</th>
+                <th>Observaciones</th>
                 <th>Registrado por</th>
                 <th>Acciones</th>
             </tr>
         </thead>
-        <tbody>
+        <body>
             @forelse ($entrenamientos as $entrenamiento)
                 <tr>
                     <td>{{ $entrenamiento->id_entrenamiento }}</td>
+                    <td>{{ $entrenamiento->descripcion }}</td>
                     <td>{{ $entrenamiento->fecha }}</td>
                     <td>{{ $entrenamiento->lugar }}</td>
                     <td>{{ $entrenamiento->hora_inicio }}</td>
                     <td>{{ $entrenamiento->hora_fin }}</td>
-                    <td>{{ $entrenamiento->descripcion }}</td>
+                    <td>{{ $entrenamiento->observaciones}}</td>
                     <td>{{ $entrenamiento->id_usuario }}</td>
                     <td class="acciones">
                         <a href="{{ route('entrenamientos.edit', $entrenamiento->id_entrenamiento) }}" style= "text-decoration:none;">
@@ -61,7 +69,7 @@
                     <td colspan="8" style="text-align: center;">No se encontraron entrenamientos.</td>
                 </tr>
             @endforelse
-        </tbody>
+        </body>
     </table>
 
     <div style="margin-top: 15px;">

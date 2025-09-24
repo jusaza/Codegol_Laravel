@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EntrenamientoController;
-//use App\Http\Controllers\InventarioController;
+use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\MatriculaController;
 
@@ -43,6 +43,8 @@ Route::resource('usuarios', UsuarioController::class);
 Route::resource('entrenamientos', EntrenamientoController::class);
 Route::get('/entrenamientopag', [EntrenamientoController::class, 'index'])->name('entrenamientos.page');
 
+Route::resource('inventarios', InventarioController::class);
+Route::get('/inventariopag', [App\Http\Controllers\InventarioController::class, 'index'])->name('inventariopag');
 
 Route::resource('matriculas1',MatriculaController::class);
 Route::get('/matriculapag', [App\Http\Controllers\MatriculaController::class, 'pag'])->name('matriculapag');

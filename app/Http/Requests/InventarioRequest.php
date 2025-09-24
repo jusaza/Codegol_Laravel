@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EntrenamientoRequest extends FormRequest
+class InventarioRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,13 +22,11 @@ class EntrenamientoRequest extends FormRequest
     public function rules(): array
     {
         return [
-			//'id_entrenamiento' => 'required',
+			//'id_inventario' => 'required',
+			'nombre_articulo' => 'required|string',
+			'cantidad_total' => 'required',
 			'descripcion' => 'string',
-			'fecha' => 'required',
-			'hora_inicio' => 'required',
-			'hora_fin' => 'required',
-			'lugar' => 'required|string',
-			'observaciones' => 'string',
+			//'fecha_ingreso' => 'required',
 			//'estado' => 'required',
 			'id_usuario' => 'required',
         ];
