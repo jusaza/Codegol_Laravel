@@ -18,7 +18,7 @@ class InventarioController extends Controller
     {
          $busqueda = $request->get('nombre'); // capturamos el texto del input
 
-    $inventarios = Inventario::when($busqueda, function ($query, $busqueda) {
+        $inventarios = Inventario::when($busqueda, function ($query, $busqueda) {
             return $query->where('nombre_articulo', 'like', '%' . $busqueda . '%');
         })
         ->paginate();

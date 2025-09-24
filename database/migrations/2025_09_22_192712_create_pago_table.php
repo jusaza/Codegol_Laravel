@@ -11,7 +11,7 @@ return new class extends Migration
     {
         Schema::create('pago', function (Blueprint $table) {
 
-            $table->tinyIncrements("id_pago")->comment("identificador del pago");
+            $table->increments("id_pago")->comment("identificador del pago");
             $table->string("concepto_pago", 100)->comment("concepto o motivo del pago");
             $table->date("fecha_pago")->comment("fecha en que se registro la factura del pago ");
             $table->enum("metodo_pago",['efectivo','transferencia'])->comment("método utilizado para el pago")->nullable();
@@ -21,13 +21,13 @@ return new class extends Migration
 
             //Relacionre-llaves foraneas
 
-            $table->unsignedTinyInteger("id_usuario")->comment("usuario que registro el pago");
+            $table->unsignedInteger("id_usuario")->comment("usuario que registro el pago");
             $table->foreign("id_usuario")->references("id_usuario")->on("usuario");
 
-            $table->unsignedTinyInteger("id_responsable")->comment("usuario que realizo el pago");
+            $table->unsignedInteger("id_responsable")->comment("usuario que realizo el pago");
             $table->foreign("id_responsable")->references("id_usuario")->on("usuario");
 
-            $table->unsignedTinyInteger("id_matricula")->comment("matrícula relacionada al pago");
+            $table->unsignedInteger("id_matricula")->comment("matrícula relacionada al pago");
             $table->foreign("id_matricula")->references("id_matricula")->on("matricula");
 
         });
