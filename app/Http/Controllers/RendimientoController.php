@@ -39,7 +39,7 @@ class RendimientoController extends Controller
     {
         Rendimiento::create($request->validated());
 
-        return Redirect::route('rendimientos.index')
+        return Redirect::route('rendimientopag')
             ->with('success', 'Rendimiento created successfully.');
     }
 
@@ -70,7 +70,7 @@ class RendimientoController extends Controller
     {
         $rendimiento->update($request->validated());
 
-        return Redirect::route('rendimientos.index')
+        return Redirect::route('rendimientopag')
             ->with('success', 'Rendimiento updated successfully');
     }
 
@@ -78,7 +78,7 @@ class RendimientoController extends Controller
     {
         Rendimiento::find($id)->delete();
 
-        return Redirect::route('rendimientos.index')
+        return Redirect::route('rendimientopag')
             ->with('success', 'Rendimiento deleted successfully');
     }
 }
