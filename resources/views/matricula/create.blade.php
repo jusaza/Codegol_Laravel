@@ -5,15 +5,8 @@
 @endsection
 
 @section('content')
-    <section class="content container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-
-                <div class="card card-default">
-                    <div class="card-header">
-                        <span class="card-title">{{ __('Registrar  Matricula') }}</span>
-                    </div>
-                    <div class="card-body bg-white">
+                    <div class="login-box" role="main" aria-label="Formulario de matrícula">
+                        <h1>Matrícula</h1>
                         <form method="POST" action="{{ route('matriculas1.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
@@ -21,8 +14,4 @@
 
                         </form>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
 @endsection

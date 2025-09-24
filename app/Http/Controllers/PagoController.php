@@ -48,7 +48,7 @@ class PagoController extends Controller
         Pago::create($request->validated());
 
         return Redirect::route('pago.index')
-            ->with('success', 'Pago creado correctamente.');
+            ->with('success', '');
     }
 
     /**
@@ -81,7 +81,7 @@ class PagoController extends Controller
         $pago->update($request->validated());
 
         return Redirect::route('pago.index')
-            ->with('success', 'Pago actualizado correctamente.');
+            ->with('success', '');
     }
 
     /**
