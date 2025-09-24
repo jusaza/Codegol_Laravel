@@ -1,6 +1,6 @@
         <div>
             <label for="descripcion" class="form-label">{{ __('Descripcion') }}</label>
-            <input type="text" name="descripcion" class="form-control @error('descripcion') is-invalid @enderror" value="{{ old('descripcion', $entrenamiento?->descripcion) }}" id="descripcion" placeholder="Descripción del entrenamiento" required>
+            <input type="text" name="descripcion" class="form-control @error('descripcion') is-invalid @enderror" value="{{ old('descripcion', $entrenamiento?->descripcion) }}" id="descripcion" placeholder="Descripción de nbh" required>
         </div>
         <div class="Formgrupo">
             <label for="fecha" class="form-label">{{ __('Fecha') }}</label>
