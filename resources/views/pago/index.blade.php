@@ -8,7 +8,7 @@
         <div class="barra-busqueda">
             {{-- Formulario de búsqueda --}}
             <form method="GET" action="{{ route('pago.index') }}">
-                <input type="text" name="search" placeholder="Buscar pago..." value="{{ request('search') }}">
+                <input type="text" name="nombre" placeholder="Buscar pago..." value="{{ request('nombre') }}">
             </form>
         </div>
         <a href="{{ route('pago.create') }}" class="boton-registrar">Registrar pago</a>
@@ -33,6 +33,7 @@
                 <th>Registrado por</th>
                 <th>Responsable</th>
                 <th>Matrícula</th>
+                <th>Estado</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -48,6 +49,7 @@
                     <td>{{ $pago->usuario->nombre ?? $pago->id_usuario }}</td>
                     <td>{{ $pago->usuario_responsable->nombre ?? $pago->id_responsable }}</td>
                     <td>{{ $pago->matricula->id_matricula ?? '—' }}</td>
+                    <td>{{ $pago->estado == 1 ? 'Activo' : 'Inactivo' }}</td>
                     <td class="acciones">
                         <a href="{{ route('pago.edit', $pago->id_pago) }}" style="text-decoration:none;">
                             <button class="actualizar">Actualizar</button>
@@ -73,7 +75,7 @@
 
     {{-- Paginación --}}
     <div style="margin-top: 15px;">
-        {!! $pagos->withQueryString()->links() !!}
+       {!! $pagos->appends(['nombre' => request('busqueda')])->links() !!}
     </div>
 </div>
 @endsection

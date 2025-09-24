@@ -16,9 +16,15 @@ class PagoController extends Controller
      */
     public function index(Request $request): View
     {
-        $pagos = Pago::paginate();
 
-        return view('pago.index', compact('pagos'))
+        $busqueda = $request->get('nombre'); // capturamos el texto del input
+
+        $pagos = Pago::when($busqueda, function ($query, $busqueda) {
+            return $query->where('concepto_pago', 'like', '%' . $busqueda . '%');
+        })
+        ->paginate();
+
+        return view('pago.index', compact('pagos',"busqueda"))
             ->with('i', ($request->input('page', 1) - 1) * $pagos->perPage());
     }
 
@@ -83,10 +89,15 @@ class PagoController extends Controller
      */
     public function destroy($id): RedirectResponse
     {
-        Pago::findOrFail($id)->delete();
+        $pago = Pago::find($id);
+
+        if ($pago) {
+            $pago->estado = false;   // 👈 se asigna manualmente
+            $pago->save();
+        }
 
         return Redirect::route('pago.index')
-            ->with('success', 'Pago eliminado correctamente.');
+            ->with('success', '');
     }
 }
 
