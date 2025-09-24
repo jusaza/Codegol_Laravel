@@ -1,6 +1,3 @@
-<div class="row padding-1 p-1">
-    <div class="col-md-12">
-        
         <div class="form-group mb-2 mb20">
             <label for="id_rendimiento" class="form-label">{{ __('Id Rendimiento') }}</label>
             <input type="text" name="id_rendimiento" class="form-control @error('id_rendimiento') is-invalid @enderror" value="{{ old('id_rendimiento', $rendimiento?->id_rendimiento) }}" id="id_rendimiento" placeholder="Id Rendimiento">
@@ -77,8 +74,4 @@
             {!! $errors->first('id_usuario', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
 
-    </div>
-    <div class="col-md-12 mt20 mt-2">
         <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
-    </div>
-</div>

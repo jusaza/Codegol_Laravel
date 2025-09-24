@@ -53,4 +53,3 @@ Route::resource('matriculas1',MatriculaController::class);
 Route::get('/matriculapag', [App\Http\Controllers\MatriculaController::class, 'pag'])->name('matriculapag');
 
 Route::resource('rendimientos', RendimientoController::class);
-Route::get('/rendimientopag', [App\Http\Controllers\RendimientoController::class, 'index'])->name('rendimientopag');
