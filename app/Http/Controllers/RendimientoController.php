@@ -18,7 +18,7 @@ class RendimientoController extends Controller
     {
         $rendimientos = Rendimiento::paginate();
 
-        return view('rendimiento.index', compact('rendimientos'))
+        return view('rendimientos.index', compact('rendimientos'))
             ->with('i', ($request->input('page', 1) - 1) * $rendimientos->perPage());
     }
 
@@ -29,7 +29,7 @@ class RendimientoController extends Controller
     {
         $rendimiento = new Rendimiento();
 
-        return view('rendimiento.create', compact('rendimiento'));
+        return view('rendimientos.create', compact('rendimiento'));
     }
 
     /**
@@ -40,7 +40,7 @@ class RendimientoController extends Controller
         Rendimiento::create($request->validated());
 
         return Redirect::route('rendimientos.index')
-            ->with('success', 'Rendimiento created successfully.');
+            ->with('success', 'Rendimiento creado correctamente.');
     }
 
     /**
@@ -50,7 +50,7 @@ class RendimientoController extends Controller
     {
         $rendimiento = Rendimiento::find($id);
 
-        return view('rendimiento.show', compact('rendimiento'));
+        return view('rendimientos.show', compact('rendimiento'));
     }
 
     /**
@@ -60,7 +60,7 @@ class RendimientoController extends Controller
     {
         $rendimiento = Rendimiento::find($id);
 
-        return view('rendimiento.edit', compact('rendimiento'));
+        return view('rendimientos.edit', compact('rendimiento'));
     }
 
     /**
@@ -71,14 +71,17 @@ class RendimientoController extends Controller
         $rendimiento->update($request->validated());
 
         return Redirect::route('rendimientos.index')
-            ->with('success', 'Rendimiento updated successfully');
+            ->with('success', 'Rendimiento actualizado correctamente.');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy($id): RedirectResponse
     {
         Rendimiento::find($id)->delete();
 
         return Redirect::route('rendimientos.index')
-            ->with('success', 'Rendimiento deleted successfully');
+            ->with('success', 'Rendimiento eliminado correctamente.');
     }
 }

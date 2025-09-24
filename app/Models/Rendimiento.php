@@ -32,7 +32,10 @@ use Illuminate\Database\Eloquent\Model;
 class Rendimiento extends Model
 {
     
+    protected $primaryKey = 'id_rendimiento';
     protected $perPage = 20;
+    protected $table = 'rendimiento';
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.

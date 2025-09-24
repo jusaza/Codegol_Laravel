@@ -29,7 +29,8 @@ Route::view('/pago', 'pago.pago');
 Route::view('/pagoregistro', 'pago.pagopag');
 
 Route::view('/rendimiento', 'rendimiento.rendimiento');
-Route::view('/rendimientopag', 'rendimiento.rendimientopag');
+Route::view('/rendimientopag', 'rendimientos.rendimientopag');
+
 
 Route::view('/usuario/actregistro', 'usuario.actregristro');
 Route::view('/usuario/registropag', 'usuario.registropag');

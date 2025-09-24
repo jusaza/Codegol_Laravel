@@ -21,8 +21,7 @@ class RendimientoRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-			'id_rendimiento' => 'required',
+        $rules = [
 			'fecha_evaluacion' => 'required',
 			'posicion' => 'required|string',
 			'velocidad' => 'required',
@@ -32,10 +31,10 @@ class RendimientoRequest extends FormRequest
 			'pase' => 'required',
 			'tecnica' => 'required',
 			'observaciones' => 'string',
-			'estado' => 'required',
 			'id_matricula' => 'required',
 			'id_entrenamiento' => 'required',
 			'id_usuario' => 'required',
         ];
+        return $rules;
     }
 }

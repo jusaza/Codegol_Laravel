@@ -1,4 +1,4 @@
-@extends('layouts.form')
+@extends('layouts.app')
 
 @section('template_title')
     Rendimientos
@@ -77,9 +77,9 @@
 										<td >{{ $rendimiento->id_usuario }}</td>
 
                                             <td>
-                                                <form action="{{ route('rendimientos.destroy', $rendimiento->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('rendimientos.show', $rendimiento->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('rendimientos.edit', $rendimiento->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                <form action="{{ route('rendimientos.destroy', $rendimiento->id_rendimiento) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('rendimientos.show', $rendimiento->id_rendimiento) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('rendimientos.edit', $rendimiento->id_rendimiento) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm" onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
