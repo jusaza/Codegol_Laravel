@@ -1,7 +1,7 @@
 @extends('layouts.form')
 
 @section('template_title')
-    {{ __('Update') }} Matricula
+    {{ __('Update') }} Pago
 @endsection
 
 @section('content')
@@ -11,14 +11,14 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Actualizar') }} Matricula</span>
                     </div>
-                    <div class="card-body bg-white">
-                        <form method="POST" action="{{ route('matriculas1.update', $matricula->id_matricula) }}"  role="form" enctype="multipart/form-data">
+                    <div class="login-box" role="main" aria-label="Formulario de Modificacion de pago">
+                        <h1>Pago</h1>
+                        <form method="POST" action="{{ route('pago.update', $pago->id_pago) }}" role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 
-                            @include('matricula.form')
+                            @include('pago.form')
 
                         </form>
                     </div>
@@ -27,3 +27,4 @@
         </div>
     </section>
 @endsection
+

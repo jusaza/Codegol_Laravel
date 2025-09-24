@@ -27,6 +27,8 @@
           <th>Fecha Fin</th>
           <th>Estado</th>
           <th>Observaciones</th>
+          <th>Categoria</th>
+          <th>Nivel</th>
           <th>ID Jugador</th>
           <th>Registrado por</th>
           <th>Acciones</th>
@@ -41,6 +43,8 @@
             <td>{{ $matricula->fecha_fin }}</td>
             <td>{{ $matricula->estado ? 'Activo' : 'Inactivo' }}</td>
             <td>{{ $matricula->observaciones }}</td>
+            <td>{{ $matricula->categoria }}</td>
+            <td>{{ $matricula->nivel }}</td>
             <td>{{ $matricula->id_jugador }}</td>
             <td>{{ $matricula->id_usuario }}</td>
             <td class="acciones">

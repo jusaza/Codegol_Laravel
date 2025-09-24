@@ -19,7 +19,7 @@
       <li><a href="{{ url('/inventariopag') }}">Inventario</a></li>
       <li><a href="{{ url('/rendimientopag') }}">Rendimiento</a></li>
       <li><a href="{{ url('/matriculapag') }}">Matrícula</a></li>
-      <li><a href="{{ url('/pagoregistro') }}">Pago</a></li>
+      <li><a href="{{ url('/pago') }}">Pago</a></li>
     </ul>
     <a href="{{ url('/') }}" class="cerrar-sesion">Cerrar sesión</a>
   </aside>
