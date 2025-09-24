@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\DB;
+
 
 
 return new class extends Migration
@@ -22,7 +22,7 @@ public function up(): void
               ->comment('detalle breve del entrenamiento');
 
         $table->date('fecha')
-              ->default(DB::raw('CURRENT_DATE'))
+              
               ->comment('fecha programada del entrenamiento');
 
         $table->time('hora_inicio')

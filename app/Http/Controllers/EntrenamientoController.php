@@ -16,11 +16,20 @@ class EntrenamientoController extends Controller
      */
     public function index(Request $request): View
     {
-        $entrenamientos = Entrenamiento::paginate();
+        $busqueda = $request->get('busqueda'); // capturamos el texto del input
 
-        return view('entrenamiento.index', compact('entrenamientos'))
+        $entrenamientos = Entrenamiento::when($busqueda, function ($query, $busqueda) {
+                return $query->where(function ($q) use ($busqueda) {
+                    $q->where('fecha', 'like', '%' . $busqueda . '%')
+                    ->orWhereRaw("LOWER(TRIM(descripcion)) LIKE ?", ['%' . strtolower(trim($busqueda)) . '%']);
+                });
+            })
+            ->paginate();
+
+        return view('entrenamiento.index', compact('entrenamientos', 'busqueda'))
             ->with('i', ($request->input('page', 1) - 1) * $entrenamientos->perPage());
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -76,7 +85,11 @@ class EntrenamientoController extends Controller
 
     public function destroy($id): RedirectResponse
     {
-        Entrenamiento::find($id)->delete();
+        $entrenamiento = Entrenamiento::find($id);
+        if ($entrenamiento) {
+            $entrenamiento->estado = false;   // 👈 se asigna manualmente
+            $entrenamiento->save();
+        }
 
         return Redirect::route('entrenamientos.index')
             ->with('success', 'Entrenamiento deleted successfully');

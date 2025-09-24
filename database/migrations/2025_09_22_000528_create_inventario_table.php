@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -16,12 +17,13 @@ return new class extends Migration
                   ->comment('identificador del artículo');
             $table->string('nombre_articulo', 50)
                   ->comment('nombre del producto o artículo');
-            $table->unsignedTinyInteger('cantidad_total')
+            $table->unsignedSmallInteger('cantidad_total')
                   ->comment('cantidad total disponible');
             $table->string('descripcion', 100)
                   ->nullable()
                   ->comment('detalle adicional del artículo');
             $table->date('fecha_ingreso')
+                  ->default(DB::raw('CURRENT_DATE'))
                   ->comment('fecha en que se registró el artículo');
             $table->boolean('estado')
                   ->default(true)

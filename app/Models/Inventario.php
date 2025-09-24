@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
+
 /**
- * Class Entrenamiento
+ * Class Inventario
  *
- * @property $id_entrenamiento
+ * @property $id_inventario
+ * @property $nombre_articulo
+ * @property $cantidad_total
  * @property $descripcion
- * @property $fecha
- * @property $hora_inicio
- * @property $hora_fin
- * @property $lugar
- * @property $observaciones
+ * @property $fecha_ingreso
  * @property $estado
  * @property $id_usuario
  *
@@ -23,27 +22,29 @@ use Illuminate\Database\Eloquent\Builder;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Entrenamiento extends Model
+class Inventario extends Model
 {
     
     protected $perPage = 20;
-    protected $primaryKey = 'id_entrenamiento';
-    protected $table = 'entrenamiento';
+    protected $primaryKey = 'id_inventario';
+    protected $table = 'inventario';
     public $timestamps = false;
-
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected $fillable = ['descripcion', 'fecha', 'hora_inicio', 'hora_fin', 'lugar', 'observaciones', 'id_usuario'];
+    protected $fillable = ['nombre_articulo', 'cantidad_total', 'descripcion', 'id_usuario'];
+
+        // Scope global para ocultar inactivos siempre
     protected static function booted()
     {
         static::addGlobalScope('estado', function (Builder $builder) {
             $builder->where('estado', true);
         });
     }
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -58,7 +59,7 @@ class Entrenamiento extends Model
      */
     public function detallesUtilizas()
     {
-        //return $this->hasMany(\App\Models\DetallesUtiliza::class, 'id_entrenamiento', 'id_entrenamiento');
+       // return $this->hasMany(\App\Models\DetallesUtiliza::class, 'id_inventario', 'id_inventario');
     }
     
 }
