@@ -1,4 +1,4 @@
-@extends('layouts.form')
+@extends('layouts.admin')
 
 @section('template_title')
     Rendimientos
