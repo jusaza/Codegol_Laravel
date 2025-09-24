@@ -1,6 +1,6 @@
         <div>
             <label for="descripcion" class="form-label">{{ __('Descripcion') }}</label>
-            <input type="text" name="descripcion" class="form-control @error('descripcion') is-invalid @enderror" value="{{ old('descripcion', $entrenamiento?->descripcion) }}" id="descripcion" placeholder="Descripcion" required>
+            <input type="text" name="descripcion" class="form-control @error('descripcion') is-invalid @enderror" value="{{ old('descripcion', $entrenamiento?->descripcion) }}" id="descripcion" placeholder="Descripción del entrenamiento" required>
         </div>
         <div class="Formgrupo">
             <label for="fecha" class="form-label">{{ __('Fecha') }}</label>
@@ -17,7 +17,7 @@
         </div>
         <div class="Formgrupo">
             <label for="lugar" class="form-label">{{ __('Lugar') }}</label>
-            <input type="text" name="lugar" class="form-control @error('lugar') is-invalid @enderror" value="{{ old('lugar', $entrenamiento?->lugar) }}" id="lugar" placeholder="Lugar" required>
+            <input type="text" name="lugar" class="form-control @error('lugar') is-invalid @enderror" value="{{ old('lugar', $entrenamiento?->lugar) }}" id="lugar" placeholder="Lugar del entrenamiento" required>
         </div>
         <div class="Formgrupo">
             <label for="observaciones" class="form-label">{{ __('Observaciones') }}</label>
@@ -29,4 +29,3 @@
         </div>
 
         <button type="submit" class="btn btn-primary">{{ __('Guardar entrenamiento') }}</button>
-</div>

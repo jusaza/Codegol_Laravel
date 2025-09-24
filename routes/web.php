@@ -29,10 +29,8 @@ Route::view('/matriculapag', 'matricula.matriculapag');
 Route::view('/rendimiento', 'rendimiento.rendimiento');//loco
 Route::view('/rendimientopag', 'rendimiento.rendimientopag');//locos
 
-
 Route::view('/usuario/actregistro', 'usuario.actregristro');
 Route::view('/usuario/registropag', 'usuario.registropag');
-
 Route::view('/pagina_original', 'pagina_original');
 
 
@@ -40,8 +38,6 @@ Route::view('/pagina_original', 'pagina_original');
 
 Route::resource('usuarios', UsuarioController::class);
 Route::resource('pago', PagoController::class);
-
-
 
 Route::resource('entrenamientos', EntrenamientoController::class);
 Route::get('/entrenamientopag', [EntrenamientoController::class, 'index'])->name('entrenamientos.page');

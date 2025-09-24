@@ -5,15 +5,9 @@
 @endsection
 
 @section('content')
-    <section class="content container-fluid">
-        <div class="">
-            <div class="col-md-12">
-
-                <div class="card card-default">
-                    <div class="card-header">
-                        <span class="card-title">{{ __('Update') }} Rendimiento</span>
-                    </div>
-                    <div class="card-body bg-white">
+        <div class="login-box" role="main" aria-label="Formulario de rendimiento">
+             <h1>Rendimiento</h1>
+                   
                         <form method="POST" action="{{ route('rendimientos.update', $rendimiento->id_rendimiento) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
@@ -21,9 +15,5 @@
                             @include('rendimiento.form')
 
                         </form>
-                    </div>
-                </div>
-            </div>
         </div>
-    </section>
 @endsection
