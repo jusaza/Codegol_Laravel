@@ -15,7 +15,7 @@
     <h2>⚽ Menú ⚽</h2>
     <ul>
       <li>
-        <a href="{{ url('/usuario/registropag') }}">Usuarios</a>
+        <a href="{{ url('usuarios') }}">Usuarios</a>
       </li>
       <li>
         <a href="{{ url('/entrenamientopag') }}">Entrenamiento</a>

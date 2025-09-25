@@ -11,6 +11,7 @@ use Illuminate\View\View;
 
 class MatriculaController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      */
@@ -87,7 +88,7 @@ class MatriculaController extends Controller
         $matricula = Matricula::find($id);
 
         if ($matricula) {
-            $matricula->estado = false;   // 👈 se asigna manualmente
+            $matricula->estado = false;   
             $matricula->save();
         }
 

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EntrenamientoController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\RolController;
 use App\Http\Controllers\MatriculaController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\RendimientoController;
@@ -38,7 +39,9 @@ Route::view('/pagina_original', 'pagina_original');
 //Controladores 
 
 Route::resource('usuarios', UsuarioController::class);
-Route::resource('pago', PagoController::class);
+Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'index'])->name('usuariopag');
+
+Route::resource('rols', RolController::class);
 
 Route::resource('entrenamientos', EntrenamientoController::class);
 Route::get('/entrenamientopag', [EntrenamientoController::class, 'index'])->name('entrenamientos.page');
@@ -54,3 +57,5 @@ Route::get('/rendimientopag', [App\Http\Controllers\RendimientoController::class
 
 Route::resource('detalles-utilizas', DetallesUtilizaController::class);
 
+Route::resource('pago', PagoController::class);
+Route::get('/pagos/pdf', [PagoController::class, 'reportePdf'])->name('pago.pdf');

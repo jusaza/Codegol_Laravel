@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UsuarioRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
@@ -17,7 +18,8 @@ class UsuarioController extends Controller
      */
     public function index(Request $request): View
     {
-        $usuarios = Usuario::paginate();
+        // ✅ Se agrega with('roles') para traer los roles de cada usuario
+        $usuarios = Usuario::with('roles')->paginate();
 
         return view('usuario.index', compact('usuarios'))
             ->with('i', ($request->input('page', 1) - 1) * $usuarios->perPage());
@@ -78,21 +80,35 @@ class UsuarioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UsuarioRequest $request, Usuario $usuario): RedirectResponse
+    public function update(UsuarioRequest $request, $id): RedirectResponse
     {
+        $usuario = Usuario::findOrFail($id);
         $usuario->update($request->validated());
 
         $usuario->roles()->sync($request->input('roles', []));
 
-        return Redirect::route('usuarios.index')
-            ->with('success', 'Usuario updated successfully');
+        return Redirect::route('usuariopag')
+            ->with('success', '');
     }
 
     public function destroy($id): RedirectResponse
     {
-        Usuario::find($id)->delete();
+        $usuario = Usuario::find($id);
 
-        return Redirect::route('usuarios.index')
-            ->with('success', 'Usuario deleted successfully');
+        if ($usuario) {
+            $usuario->estado = false;   
+            $usuario->save();
+        }
+
+        return Redirect::route('usuariopag')
+            ->with('success', '');
     }
+
+    public function pag()
+    {
+        // ✅ Se agrega with('roles') para traer los roles también en la paginación personalizada
+        $usuarios = \App\Models\Usuario::with('roles')->paginate(10); // o ->all() si no quieres paginación
+        return view('usuario.usuariopag', compact('usuarios'));
+    }
+
 }

@@ -25,8 +25,9 @@
           <th>Fecha Matrícula</th>
           <th>Fecha Inicio</th>
           <th>Fecha Fin</th>
+          
           <th>Observaciones</th>
-          <th>Categoria</th>
+          <th>Categoria Sub</th>
           <th>Nivel</th>
           <th>ID Jugador</th>
           <th>Registrado por</th>
@@ -40,6 +41,7 @@
             <td>{{ $matricula->fecha_matricula }}</td>
             <td>{{ $matricula->fecha_inicio }}</td>
             <td>{{ $matricula->fecha_fin }}</td>
+            
             <td>{{ $matricula->observaciones }}</td>
             <td>{{ $matricula->categoria }}</td>
             <td>{{ $matricula->nivel }}</td>

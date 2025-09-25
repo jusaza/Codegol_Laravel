@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Matriculas
+    Rols
 @endsection
 
 @section('content')
@@ -13,11 +13,11 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Matriculas') }}
+                                {{ __('Rols') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('matriculas1.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('rols.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -36,47 +36,28 @@
                                     <tr>
                                         <th>No</th>
                                         
-									<th >Id Matricula</th>
-									<th >Fecha Matricula</th>
-									<th >Fecha Inicio</th>
-									<th >Fecha Fin</th>
-                                    <th >Estado</th>
-                                    <th >Observaciones</th>
-									<th >Categoria Sub</th>
-									<th >Nivel</th>
-									<th >Id Jugador</th>
-									<th >Id Usuario</th>
+									<th >Id Rol</th>
+									<th >Rol Usuario</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($matriculas as $matricula)
+                                    @foreach ($rols as $rol)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-										<td >{{ $matricula->id_matricula }}</td>
-										<td >{{ $matricula->fecha_matricula }}</td>
-										<td >{{ $matricula->fecha_inicio }}</td>
-										<td >{{ $matricula->fecha_fin }}</td>
-                                        <td >{{ $matricula->estado==1?"Activo":"Inactivo" }}</td>  
-										<td >{{ $matricula->observaciones }}</td>
-										<td >{{ $matricula->categoria }}</td>
-										<td >{{ $matricula->nivel }}</td>
-										<td >{{ $matricula->id_jugador }}</td>
-										<td >{{ $matricula->id_usuario }}</td>
+										<td >{{ $rol->id_rol }}</td>
+										<td >{{ $rol->rol_usuario }}</td>
 
                                             <td>
-                                                <form action="{{ route('matriculas1.destroy', $matricula->id_matricula) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('matriculas1.show', $matricula->id_matricula) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('matriculas1.edit', $matricula->id_matricula) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                <form action="{{ route('rols.destroy', $rol->id_rol) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('rols.show', $rol->id_rol) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('rols.edit', $rol->id_rol) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm" onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
                                                 </form>
-                                                
-
-
                                             </td>
                                         </tr>
                                     @endforeach
@@ -85,7 +66,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $matriculas->withQueryString()->links() !!}
+                {!! $rols->withQueryString()->links() !!}
             </div>
         </div>
     </div>
