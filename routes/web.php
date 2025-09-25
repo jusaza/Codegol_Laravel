@@ -40,6 +40,7 @@ Route::view('/pagina_original', 'pagina_original');
 
 Route::resource('usuarios', UsuarioController::class);
 Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'index'])->name('usuariopag');
+Route::post('/login', [UsuarioController::class, 'login'])->name('usuario.login');
 
 Route::resource('rols', RolController::class);
 

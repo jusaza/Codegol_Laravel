@@ -47,7 +47,23 @@ class Usuario extends Model
      * @var array<int, string>
      */
     protected $fillable = ['correo', 'contrasena', 'nombre_completo', 'num_identificacion', 'tipo_documento', 'telefono_1', 'telefono_2', 'direccion', 'genero', 'fecha_nacimiento', 'lugar_nacimiento', 'grupo_sanguineo', 'foto_perfil', 'estado', 'id_usuario_registro', 'id_responsable'];
+   
+    public function login(Request $request)
+    {
+        $documento = $request->input('num_indentificacion');
+        $contrasena = $request->input('contrasena');
 
+        // Llamar al procedure
+        $resultado = DB::select('CALL loginusuario(?, ?)', [$documento, $contrasena]);
+
+        if (count($resultado) > 0) {
+            // Usuario encontrado
+            return Redirect::route('pagina_original')->with('Inicio de sesión exitoso.');
+        } else {
+            // Credenciales inválidas
+            return Redirect::back()->withErrors(['msg' => 'Credenciales inválidas.']);
+        }
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

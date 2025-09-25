@@ -13,12 +13,27 @@ use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
+    public function procesar() {
+        if ($_POST["btn"] == "login") {
+            $this->login();
+        }
+    }
+    public function login(){
+        $usuario = new Usuario();
+        $usuario->num_indentificacion = request('num_indentificacion');
+        $usuario->contrasena = request('contrasena');
+        $respuesta = $usuario->login();
+        if($respuesta){
+            return Redirect::route('pagina_original')->with('Inicio de sesión exitoso.');
+        } else {
+            return Redirect::back()->withErrors(['msg' => 'Credenciales inválidas.']);
+        }
+    }
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request): View
     {
-        // ✅ Se agrega with('roles') para traer los roles de cada usuario
         $usuarios = Usuario::with('roles')->paginate();
 
         return view('usuario.index', compact('usuarios'))
