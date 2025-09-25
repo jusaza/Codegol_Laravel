@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.form')
 
 @section('template_title')
     {{ $pago->name ?? __('Show') . " " . __('Pago') }}

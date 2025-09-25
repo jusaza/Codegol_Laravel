@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.form')
 
 @section('template_title')
     {{ $usuario->name ?? __('Show') . " " . __('Usuario') }}

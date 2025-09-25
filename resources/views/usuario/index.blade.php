@@ -17,6 +17,11 @@
         </div>
 
         <a href="{{ route('usuarios.create') }}" class="boton-registrar">Registrar usuario</a>
+
+        <!-- Botones de exportación sin cambiar nada -->
+        <button id="exportarCSV" class="boton-registrar">Exportar CSV</button>
+        <button id="exportarXLSX" class="boton-registrar">Exportar XLSX</button>
+        <button id="exportarPDF" class="boton-registrar">Exportar PDF</button>
     </div>
 
     @if ($message = Session::get('success'))
@@ -25,7 +30,7 @@
         </div>
     @endif
 
-    <table>
+    <table id="tablaUsuarios">
         <thead>
             <tr>
                 <th>No</th>
@@ -82,4 +87,72 @@
         {!! $usuarios->withQueryString()->links() !!}
     </div>
 </div>
+
+<!-- Librerías necesarias -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+// CSV
+document.getElementById('exportarCSV').addEventListener('click', function() {
+    let tabla = document.getElementById('tablaUsuarios');
+    let filas = tabla.querySelectorAll('tr');
+    let csv = [];
+    filas.forEach(fila => {
+        let celdas = fila.querySelectorAll('th, td');
+        let filaCSV = [];
+        celdas.forEach((celda, index) => {
+            if(index < celdas.length - 1) filaCSV.push(celda.innerText.replace(/,/g, ''));
+        });
+        csv.push(filaCSV.join(','));
+    });
+    let blob = new Blob([csv.join('\n')], { type: 'text/csv;charset=utf-8;' });
+    let link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'usuarios.csv';
+    link.click();
+});
+
+// XLSX
+document.getElementById('exportarXLSX').addEventListener('click', function() {
+    let tabla = document.getElementById('tablaUsuarios');
+    let wb = XLSX.utils.book_new();
+    let ws_data = [];
+    tabla.querySelectorAll('tr').forEach(tr => {
+        let fila = [];
+        tr.querySelectorAll('th, td').forEach((td, index) => {
+            if(index < tr.querySelectorAll('th, td').length -1) fila.push(td.innerText);
+        });
+        ws_data.push(fila);
+    });
+    let ws = XLSX.utils.aoa_to_sheet(ws_data);
+    XLSX.utils.book_append_sheet(wb, ws, 'Usuarios');
+    XLSX.writeFile(wb, 'usuarios.xlsx');
+});
+
+// PDF
+document.getElementById('exportarPDF').addEventListener('click', function() {
+    const { jsPDF } = window.jspdf;
+    let doc = new jsPDF();
+    let tabla = document.getElementById('tablaUsuarios');
+    let filas = [];
+    tabla.querySelectorAll('tr').forEach(tr => {
+        let fila = [];
+        tr.querySelectorAll('th, td').forEach((td, index) => {
+            if(index < tr.querySelectorAll('th, td').length -1) fila.push(td.innerText);
+        });
+        filas.push(fila);
+    });
+
+    let y = 10;
+    filas.forEach((fila) => {
+        doc.text(fila.join(' | '), 10, y);
+        y += 8;
+        if(y > 280){ doc.addPage(); y=10; }
+    });
+
+    doc.save('usuarios.pdf');
+});
+</script>
+
 @endsection
