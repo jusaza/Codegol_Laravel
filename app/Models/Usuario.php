@@ -48,23 +48,7 @@ class Usuario extends Model
      */
     protected $fillable = ['correo', 'contrasena', 'nombre_completo', 'num_identificacion', 'tipo_documento', 'telefono_1', 'telefono_2', 'direccion', 'genero', 'fecha_nacimiento', 'lugar_nacimiento', 'grupo_sanguineo', 'foto_perfil', 'estado', 'id_usuario_registro', 'id_responsable'];
    
-    public function login(Request $request)
-    {
-        $documento = $request->input('num_identificacion');
-        $contrasena = $request->input('contrasena');
-
-        // Llamar al procedure
-        $resultado = DB::select('CALL loginusuario(?, ?)', [$documento, $contrasena]);
-
-        if (count($resultado) > 0) {
-            // Usuario encontrado
-            return Redirect::route('pagina_original')->with('Inicio de sesión exitoso.');
-        } else {
-            // Credenciales inválidas
-            return Redirect::back()->withErrors(['msg' => 'Credenciales inválidas.']);
-        }
-    }
-
+    
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -98,15 +82,11 @@ class Usuario extends Model
     }
 
     public function roles()
-    {
+   {
     return $this->belongsToMany(Rol::class, 'detalles_usuario_rol', 'id_usuario', 'id_rol');
-    }
-
-
+}
     public function matriculas()
     {
         return $this->hasMany(\App\Models\Matricula::class, 'id_jugador', 'id_usuario');
     }
-    }
-    
-
+   }
