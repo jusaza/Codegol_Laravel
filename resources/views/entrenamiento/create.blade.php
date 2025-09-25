@@ -9,10 +9,7 @@
                     <h1>Entrenamiento</h1>
                         <form method="POST" action="{{ route('entrenamientos.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
-
                             @include('entrenamiento.form')
-
                         </form>
                 </div>
-
 @endsection

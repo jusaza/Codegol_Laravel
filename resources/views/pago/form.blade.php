@@ -3,7 +3,7 @@
     <input type="text" name="concepto_pago" id="concepto_pago" 
            class="form-control @error('concepto_pago') is-invalid @enderror"
            value="{{ old('concepto_pago', $pago->concepto_pago ?? '') }}" required>
-    @error('concepto_pago') <div class="invalid-feedback">{{ $message }}</div> @enderror
+
 </div>
 
 <div class="form-group mb-3">
