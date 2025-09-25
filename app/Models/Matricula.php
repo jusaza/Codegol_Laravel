@@ -48,7 +48,7 @@ class Matricula extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function usuario1()
+    public function jugador()
     {
         return $this->belongsTo(\App\Models\Usuario::class, 'id_jugador', 'id_usuario');
     }

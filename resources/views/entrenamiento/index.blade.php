@@ -54,7 +54,6 @@
                         <a href="{{ route('entrenamientos.edit', $entrenamiento->id_entrenamiento) }}" style= "text-decoration:none;">
                             <button class="actualizar">Actualizar</button>
                         </a>
-
                         <form action="{{ route('entrenamientos.destroy', $entrenamiento->id_entrenamiento) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')

@@ -7,6 +7,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\MatriculaController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\RendimientoController;
+use App\Http\Controllers\DetallesUtilizaController;
 
 Route::get('/', function () {
     return view('index');
@@ -50,3 +51,6 @@ Route::get('/matriculapag', [App\Http\Controllers\MatriculaController::class, 'p
 
 Route::resource('rendimientos', RendimientoController::class);//locos3
 Route::get('/rendimientopag', [App\Http\Controllers\RendimientoController::class, 'index'])->name('rendimientopag');//locos4
+
+Route::resource('detalles-utilizas', DetallesUtilizaController::class);
+

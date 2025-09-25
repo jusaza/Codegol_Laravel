@@ -15,12 +15,17 @@ public function up(): void
             $table->increments('id_utiliza')
             ->comment('identificador del uso de inventario');
 
-            $table->unsignedTinyInteger('cantidad_usada')
+            $table->unsignedSmallInteger('cantidad_usada')
             ->comment('cantidad utilizada del artículo');
 
             $table->string('observaciones', 100)
             ->nullable()
             ->comment('notas u observaciones');
+
+            $table->boolean('devuelto')
+            ->default(false)
+            ->comment('true si el artículo ya fue regresado al inventario');
+
 
             // 🔹 Ahora INT UNSIGNED (para que coincida con increments)
             $table->unsignedInteger('id_entrenamiento')
@@ -39,6 +44,8 @@ public function up(): void
             ->references('id_inventario')->on('inventario')
             ->onDelete('cascade')
             ->onUpdate('cascade');
+
+            $table->timestamps();
       });
 }
 

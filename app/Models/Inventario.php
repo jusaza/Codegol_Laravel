@@ -61,5 +61,7 @@ class Inventario extends Model
     {
        // return $this->hasMany(\App\Models\DetallesUtiliza::class, 'id_inventario', 'id_inventario');
     }
+
+    
     
 }

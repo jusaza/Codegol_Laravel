@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use App\Models\DetallesUtiliza;
+
 
 /**
  * Class Entrenamiento
@@ -58,7 +60,21 @@ class Entrenamiento extends Model
      */
     public function detallesUtilizas()
     {
-        //return $this->hasMany(\App\Models\DetallesUtiliza::class, 'id_entrenamiento', 'id_entrenamiento');
+        return $this->hasMany(\App\Models\DetallesUtiliza::class, 'id_entrenamiento', 'id_entrenamiento');
+    }
+
+    public function detalles()
+    {
+        return $this->hasMany(DetallesUtiliza::class, 'compra_id');
+    }
+
+    public function inventario()
+    {
+        return $this->belongsTo(inventario::class, 'proveedor_id', 'id');
     }
     
+    public function detallesAsistes()
+    {
+        return $this->hasMany(\App\Models\DetallesAsiste::class, 'id_entrenamiento', 'id_entrenamiento');
+    }
 }

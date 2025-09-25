@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Entrenamiento;
+use App\Models\DetallesUtiliza;
+use App\Models\Inventario;
+use App\Models\Matricula;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\EntrenamientoRequest;
@@ -37,8 +40,17 @@ class EntrenamientoController extends Controller
     public function create(): View
     {
         $entrenamiento = new Entrenamiento();
+        $inventarios = Inventario::all();
 
-        return view('entrenamiento.create', compact('entrenamiento'));
+        // Solo jugadores con matrícula activa y rol 'Jugador'
+        $matriculas = Matricula::where('estado', true)
+            ->whereHas('jugador.roles', function($q) {
+                $q->where('rol_usuario', 'Jugador');
+            })
+            ->with('jugador')
+            ->get();
+
+        return view('entrenamiento.create', compact('entrenamiento', 'inventarios', 'matriculas'));
     }
 
     /**
@@ -46,10 +58,37 @@ class EntrenamientoController extends Controller
      */
     public function store(EntrenamientoRequest $request): RedirectResponse
     {
-        Entrenamiento::create($request->validated());
+        // Guardar entrenamiento principal
+        $entrenamiento = Entrenamiento::create($request->validated());
+
+        // Guardar detalles utiliza (si existen)
+        if ($request->has('detalles')) {
+            foreach ($request->input('detalles') as $detalle) {
+                DetallesUtiliza::create([
+                    'cantidad_usada'   => $detalle['cantidad_usada'],
+                    'observaciones'    => $detalle['observaciones'] ?? null,
+                    'devuelto'         => isset($detalle['devuelto']) ? 1 : 0,
+                    'id_entrenamiento' => $entrenamiento->id_entrenamiento,
+                    'id_inventario'    => $detalle['id_inventario'],
+                ]);
+            }
+        }
+
+        // Guardar asistencias (si existen)
+        if ($request->has('asistencias')) {
+            foreach ($request->input('asistencias') as $asiste) {
+                \App\Models\DetallesAsiste::create([
+                    'tipo_asistencia'   => $asiste['tipo_asistencia'],
+                    'justificacion'     => $asiste['justificacion'] ?? null,
+                    'observaciones'     => $asiste['observaciones'] ?? null,
+                    'id_matricula'      => $asiste['id_matricula'],
+                    'id_entrenamiento'  => $entrenamiento->id_entrenamiento,
+                ]);
+            }
+        }
 
         return Redirect::route('entrenamientos.index')
-            ->with('success', 'Entrenamiento created successfully.');
+            ->with('success', 'Entrenamiento creado correctamente.');
     }
 
     /**
@@ -67,9 +106,17 @@ class EntrenamientoController extends Controller
      */
     public function edit($id): View
     {
-        $entrenamiento = Entrenamiento::find($id);
+        $entrenamiento = Entrenamiento::with(['detallesUtilizas', 'detallesAsistes'])->find($id);
+        $inventarios = Inventario::all();
 
-        return view('entrenamiento.edit', compact('entrenamiento'));
+        $matriculas = Matricula::where('estado', true)
+            ->whereHas('jugador.roles', function($q) {
+                $q->where('rol_usuario', 'Jugador');
+            })
+            ->with('jugador')
+            ->get();
+
+        return view('entrenamiento.edit', compact('entrenamiento', 'inventarios', 'matriculas'));
     }
 
     /**
@@ -79,8 +126,40 @@ class EntrenamientoController extends Controller
     {
         $entrenamiento->update($request->validated());
 
+        // Elimina los detalles anteriores
+        $entrenamiento->detallesUtilizas()->delete();
+
+        // Guarda los nuevos detalles
+        if ($request->has('detalles')) {
+            foreach ($request->input('detalles') as $detalle) {
+                DetallesUtiliza::create([
+                    'cantidad_usada'   => $detalle['cantidad_usada'],
+                    'observaciones'    => $detalle['observaciones'] ?? null,
+                    'devuelto'         => isset($detalle['devuelto']) ? 1 : 0,
+                    'id_entrenamiento' => $entrenamiento->id_entrenamiento,
+                    'id_inventario'    => $detalle['id_inventario'],
+                ]);
+            }
+        }
+
+        // Elimina las asistencias anteriores
+        $entrenamiento->detallesAsistes()->delete();
+
+        // Guarda las nuevas asistencias
+        if ($request->has('asistencias')) {
+            foreach ($request->input('asistencias') as $asiste) {
+                \App\Models\DetallesAsiste::create([
+                    'tipo_asistencia'   => $asiste['tipo_asistencia'],
+                    'justificacion'     => $asiste['justificacion'] ?? null,
+                    'observaciones'     => $asiste['observaciones'] ?? null,
+                    'id_matricula'      => $asiste['id_matricula'],
+                    'id_entrenamiento'  => $entrenamiento->id_entrenamiento,
+                ]);
+            }
+        }
+
         return Redirect::route('entrenamientos.index')
-            ->with('success', 'Entrenamiento updated successfully');
+            ->with('success', 'Entrenamiento actualizado correctamente');
     }
 
     public function destroy($id): RedirectResponse

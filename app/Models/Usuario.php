@@ -85,5 +85,8 @@ class Usuario extends Model
 {
     return $this->belongsToMany(Rol::class, 'detalles_usuario_rol', 'id_usuario', 'id_rol');
 }
-    
+    public function matriculas()
+    {
+        return $this->hasMany(\App\Models\Matricula::class, 'id_jugador', 'id_usuario');
+    }
 }
