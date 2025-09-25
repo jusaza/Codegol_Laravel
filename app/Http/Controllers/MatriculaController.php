@@ -11,6 +11,10 @@ use Illuminate\View\View;
 
 class MatriculaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:usuario');
+    }
     /**
      * Display a listing of the resource.
      */
