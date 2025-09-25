@@ -8,10 +8,28 @@ use Illuminate\Http\Request;
 use App\Http\Requests\MatriculaRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class MatriculaController extends Controller
 {
     
+    public function reportePdf(Request $request)
+{
+    $search = $request->get('search');
+    $matriculas = \App\Models\Matricula::with(['id_jugador','id_usuario'])
+        ->when($search, function ($query, $search) {
+            return $query->where('fecha_inicio', 'like', '%' . $search . '%')
+                         ->orWhere('observaciones', 'like', '%' . $search . '%');
+        })
+        ->orderBy('id_matricula','asc')
+        ->get();
+
+    $pdf = Pdf::loadView('matricula.reportes', compact('matriculas','search'))
+              ->setPaper('a4', 'landscape');
+
+    return $pdf->download('reporte_matriculas.pdf');
+}
+
     /**
      * Display a listing of the resource.
      */

@@ -21,7 +21,7 @@
                 />
             </form>
         </div>
-
+        <a href="{{ route('rendimientos.pdf', ['busqueda' => request('busqueda')]) }}" class="boton-registrar" target="_blank">Exportar a PDF</a>
         <a href="{{ route('rendimientos.create') }}" class="boton-registrar">Registrar Rendimiento</a>
     </div>
 

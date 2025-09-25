@@ -60,3 +60,5 @@ Route::resource('detalles-utilizas', DetallesUtilizaController::class);
 
 Route::resource('pago', PagoController::class);
 Route::get('/pagos/pdf', [PagoController::class, 'reportePdf'])->name('pago.pdf');
+Route::get('matriculas1/pdf', [MatriculaController::class, 'reportePdf'])->name('matriculas1.pdf');
+Route::get('rendimientos/pdf', [RendimientoController::class, 'reportePdf'])->name('rendimientos.pdf');

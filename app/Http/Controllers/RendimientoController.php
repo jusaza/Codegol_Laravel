@@ -8,9 +8,29 @@ use Illuminate\Http\Request;
 use App\Http\Requests\RendimientoRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class RendimientoController extends Controller
 {
+    
+    public function reportePdf(Request $request)
+{
+    $busqueda = $request->get('busqueda');
+
+    $rendimientos = \App\Models\Rendimiento::when($busqueda, function ($query, $busqueda) {
+            return $query->where('fecha_evaluacion', 'like', "%$busqueda%")
+                         ->orWhere('posicion', 'like', "%$busqueda%")
+                         ->orWhere('estado', 'like', "%$busqueda%");
+        })
+        ->orderBy('id_rendimiento', 'asc')
+        ->get();
+
+    $pdf = Pdf::loadView('rendimientos.reportes', compact('rendimientos','busqueda'))
+              ->setPaper('a4', 'landscape');
+
+    return $pdf->download('reporte_rendimientos.pdf');
+}
+
     /**
      * Display a listing of the resource.
      */

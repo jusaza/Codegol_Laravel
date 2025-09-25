@@ -34,7 +34,7 @@ class Matricula extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['fecha_inicio', 'fecha_fin', 'observaciones', 'categoria', 'nivel', 'id_jugador', 'id_usuario'];
+    protected $fillable = ["fecha_matricula",'fecha_inicio', 'fecha_fin', 'observaciones', 'categoria', 'nivel', 'id_jugador', 'id_usuario'];
 
 
     /**
