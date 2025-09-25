@@ -17,6 +17,8 @@ Route::get('/', function () {
 Route::view('/servicios', 'servicios');
 Route::view('/nosotros', 'nosotros');
 Route::view('/login', 'auth.login');
+Route::view('/pagina_original', 'pagina_original')->name('pagina_original');
+
 
 // Rutas para las subcarpetas
 Route::view('/entrenamiento', 'entrenamiento.entrenamiento');
@@ -33,13 +35,13 @@ Route::view('/rendimientopag', 'rendimiento.rendimientopag');//locos
 
 Route::view('/usuario/actregistro', 'usuario.actregristro');
 Route::view('/usuario/registropag', 'usuario.registropag');
-Route::view('/pagina_original', 'pagina_original');
-
+//Route::view('/pagina_original', 'pagina_original');
 
 //Controladores 
 
 Route::resource('usuarios', UsuarioController::class);
-Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'index'])->name('usuariopag');
+Route::get('/usuario', [UsuarioController::class, 'index'])->name('usuariopag');
+Route::post('login', [UsuarioController::class, 'login'])->name('usuario.login');
 
 Route::resource('rols', RolController::class);
 
@@ -59,3 +61,5 @@ Route::resource('detalles-utilizas', DetallesUtilizaController::class);
 
 Route::resource('pago', PagoController::class);
 Route::get('/pagos/pdf', [PagoController::class, 'reportePdf'])->name('pago.pdf');
+Route::get('matriculas1/pdf', [MatriculaController::class, 'reportePdf'])->name('matriculas1.pdf');
+Route::get('rendimientos/pdf', [RendimientoController::class, 'reportePdf'])->name('rendimientos.pdf');

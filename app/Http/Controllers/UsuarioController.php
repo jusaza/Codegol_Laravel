@@ -9,16 +9,28 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UsuarioRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class UsuarioController extends Controller
 {
+    
+   public function login(Request $request) {
+    $documento = $request->input('num_identificacion');
+    $contrasena = $request->input('contrasena');
+
+    $resultado = DB::select('CALL acceso(?, ?)', [$documento, $contrasena]);
+
+    if (count($resultado) > 0) {
+        return Redirect::route('pagina_original')->with('success', 'Inicio de sesión exitoso.');
+    } else {
+        return Redirect::back()->withErrors(['msg' => 'Credenciales inválidas.']);
+    }
+}
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request): View
     {
-        // ✅ Se agrega with('roles') para traer los roles de cada usuario
         $usuarios = Usuario::with('roles')->paginate();
 
         return view('usuario.index', compact('usuarios'))

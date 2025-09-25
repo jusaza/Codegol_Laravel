@@ -15,9 +15,13 @@ class PagoController extends Controller
     /**
      * Muestra la lista de pagos paginada.
      */
-    public function reportePdf()
+    public function reportePdf(Request $request)
     {
+        $busqueda = $request->get('nombre');
         $pagos = \App\Models\Pago::with(['usuario','usuario_responsable','matricula'])
+                    ->when($busqueda, function ($query, $busqueda) {
+                    return $query->where('concepto_pago', 'like', '%' . $busqueda . '%');
+                    })
                     ->orderBy('id_pago','asc')
                     ->get();
 
@@ -30,7 +34,8 @@ class PagoController extends Controller
     public function index(Request $request): View
     {
 
-        $busqueda = $request->get('nombre'); // capturamos el texto del input
+        $busqueda = $request->get('nombre');
+         $metodoPago   = $request->get('metodo_pago');
 
         $pagos = Pago::when($busqueda, function ($query, $busqueda) {
             return $query->where('concepto_pago', 'like', '%' . $busqueda . '%');

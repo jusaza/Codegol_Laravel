@@ -9,6 +9,7 @@
           <input type="search" name="search" placeholder="Buscar matrícula por fecha de inicio o la observacion..." value="{{ request('search') }}">
         </form>
       </div>
+      <a href="{{ route('matriculas1.pdf', ['search' => request('search')]) }}" class="boton-registrar" target="_blank">Exportar a PDF</a>
       <a href="{{ route('matriculas1.create') }}" class="boton-registrar">Registrar matrícula</a>
     </div>
 

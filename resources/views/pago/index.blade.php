@@ -11,7 +11,7 @@
                 <input type="text" name="nombre" placeholder="Buscar  el pago por el concepto..." value="{{ request('nombre') }}">
             </form>
         </div>
-        <a href="{{ route('pago.pdf') }}" class="boton-registrar" target="_blank">Exportar a PDF</a>
+        <a href="{{ route('pago.pdf', ['nombre' => request('nombre')]) }}" class="boton-registrar" target="_blank">Exportar a PDF</a>
         <a href="{{ route('pago.create') }}" class="boton-registrar">Registrar pago</a>
     </div>
 
