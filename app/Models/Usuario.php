@@ -50,7 +50,7 @@ class Usuario extends Model
    
     public function login(Request $request)
     {
-        $documento = $request->input('num_indentificacion');
+        $documento = $request->input('num_identificacion');
         $contrasena = $request->input('contrasena');
 
         // Llamar al procedure

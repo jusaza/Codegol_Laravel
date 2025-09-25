@@ -21,10 +21,10 @@
     @csrf
     <div class="Formgrupo">
         <label for="documento">Documento</label>
-        <input id="documento" type="number" placeholder="Ingrese su documento" name="documento" required>
+        <input type="number" placeholder="Ingrese su documento" name="num_identificacion" required>
 
         <label for="contraseña">Contraseña</label>
-        <input id="contraseña" type="password" placeholder="Ingrese su contraseña" name="contrasena" required>
+        <input type="password" placeholder="Ingrese su contraseña" name="contrasena" required>
     </div>
 
     <button type="submit">Iniciar sesión</button>
