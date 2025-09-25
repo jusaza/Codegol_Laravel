@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\EntrenamientoController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\UsuarioController;
@@ -38,9 +37,6 @@ Route::view('/pagina_original', 'pagina_original');
 //Controladores 
 
 Route::resource('usuarios', UsuarioController::class);
-Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('login', [LoginController::class, 'login']);
-Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::resource('pago', PagoController::class);
 
 Route::resource('entrenamientos', EntrenamientoController::class);
