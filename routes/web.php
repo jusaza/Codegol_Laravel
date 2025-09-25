@@ -50,3 +50,5 @@ Route::get('/matriculapag', [App\Http\Controllers\MatriculaController::class, 'p
 
 Route::resource('rendimientos', RendimientoController::class);//locos3
 Route::get('/rendimientopag', [App\Http\Controllers\RendimientoController::class, 'index'])->name('rendimientopag');//locos4
+
+Route::get('/pagos/pdf', [PagoController::class, 'reportePdf'])->name('pago.pdf');

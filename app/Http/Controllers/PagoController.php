@@ -14,6 +14,18 @@ class PagoController extends Controller
     /**
      * Muestra la lista de pagos paginada.
      */
+    public function reportePdf()
+    {
+        $pagos = \App\Models\Pago::with(['usuario','usuario_responsable','matricula'])
+                    ->orderBy('id_pago','asc')
+                    ->get();
+
+        $pdf = Pdf::loadView('pago.reporte', compact('pagos'))
+                ->setPaper('a4', 'landscape');
+
+        return $pdf->download('reporte_pagos.pdf');
+    }
+
     public function index(Request $request): View
     {
 
