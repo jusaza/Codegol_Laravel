@@ -35,6 +35,7 @@
                 <th>Teléfono 1</th>
                 <th>Género</th>
                 <th>Foto Perfil</th>
+                <th>Rol</th>
                 <th>Estado</th>
                 <th>Acciones</th>
             </tr>
@@ -47,9 +48,10 @@
                     <td>{{ $usuario->nombre_completo }}</td>
                     <td>{{ $usuario->num_identificacion }}</td>
                     <td>{{ $usuario->telefono_1 }}</td>
-                    <td>{{ $usuario->genero }}</td>
+                    <td>{{ $usuario->genero === 'm' ? 'Masculino' : ($usuario->genero === 'f' ? 'Femenino' : 'No especificado') }}</td>
                     <td>{{ $usuario->foto_perfil }}</td>
-                    <td>{{ $usuario->estado }}</td>
+                    <td>{{ $usuario->roles->pluck('rol_usuario')->implode(', ') }}</td>
+                    <td>{{ $usuario->estado==1 ? "Activo" : "Inactivo" }}</td>  
                     <td class="acciones">
                         <a href="{{ route('usuarios.show', $usuario->id_usuario) }}" style="text-decoration:none;">
                             <button class="actualizar">Ver</button>

@@ -88,7 +88,7 @@ class MatriculaController extends Controller
         $matricula = Matricula::find($id);
 
         if ($matricula) {
-            $matricula->estado = false;   // 👈 se asigna manualmente
+            $matricula->estado = false;   
             $matricula->save();
         }
 
