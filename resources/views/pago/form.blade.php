@@ -35,7 +35,7 @@
     <label for="observaciones">Observaciones</label>
     <textarea name="observaciones" id="observaciones" 
               class="form-control"
-              placeholder="Agrega observaciones si es necesario" required>{{ old('observaciones', $pago->observaciones ?? '') }}</textarea>
+              placeholder="Agrega observaciones si es necesario" >{{ old('observaciones', $pago->observaciones ?? '') }}</textarea>
 </div>
 
 <div class="form-group mb-3">

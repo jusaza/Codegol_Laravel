@@ -54,12 +54,7 @@
         id="tecnica" placeholder="Tecnica" required>
 </div>
 
-<div class="Formgrupo">
-    <label for="promedio" class="form-label">{{ __('Promedio') }}</label>
-    <input type="number" name="promedio" class="form-control" 
-        value="{{ old('promedio', $rendimiento?->promedio) }}" 
-        id="promedio" placeholder="Este lo calcula el sistema" disabled>
-</div>
+
 
 <div class="Formgrupo">
     <label for="observaciones" class="form-label">{{ __('Observaciones') }}</label>
@@ -67,15 +62,7 @@
         value="{{ old('observaciones', $rendimiento?->observaciones) }}" 
         id="observaciones" placeholder="Observaciones" required>
 </div>
-<div class="form-group mb-3">
-    <label for="estado">Estado</label>
-    <select name="estado" id="estado" 
-            class="form-control @error('estado') is-invalid @enderror" required>
-        <option value="" disabled selected>Seleccione un estado</option>
-        <option value="1" {{ old('estado', $pago->estado ?? '') == 1 ? 'selected' : '' }}>Activo</option>
-        <option value="0" {{ old('estado', $pago->estado ?? '') == 0 ? 'selected' : '' }}>Inactivo</option>
-    </select>
-</div>
+
 
 
 <div class="Formgrupo">
