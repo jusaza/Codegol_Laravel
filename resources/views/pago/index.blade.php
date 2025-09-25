@@ -8,7 +8,7 @@
         <div class="barra-busqueda">
             {{-- Formulario de búsqueda --}}
             <form method="GET" action="{{ route('pago.index') }}">
-                <input type="text" name="nombre" placeholder="Buscar pago..." value="{{ request('nombre') }}">
+                <input type="text" name="nombre" placeholder="Buscar  el pago por el concepto..." value="{{ request('nombre') }}">
             </form>
         </div>
         <a href="{{ route('pago.create') }}" class="boton-registrar">Registrar pago</a>

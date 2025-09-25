@@ -10,9 +10,10 @@
           type="search" 
           name="nombre" 
           value="{{ $busqueda ?? '' }}" 
-          placeholder="Buscar artículo..." 
+          placeholder="Buscar por el nombre del artículo..." 
         />
       </form>
+      
     </div>
     <a href="{{ route('inventarios.create') }}" class="boton-registrar">Agregar artículo</a>
     </div>

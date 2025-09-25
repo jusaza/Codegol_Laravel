@@ -15,12 +15,25 @@ class RendimientoController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request): View
-    {
-        $rendimientos = Rendimiento::paginate();
+{
+    $query = Rendimiento::query();
 
-        return view('rendimiento.index', compact('rendimientos'))
-            ->with('i', ($request->input('page', 1) - 1) * $rendimientos->perPage());
+    // Si hay búsqueda
+    if ($request->has('busqueda') && !empty($request->busqueda)) {
+        $busqueda = $request->busqueda;
+        $query->where(function($q) use ($busqueda) {
+            $q->where('fecha_evaluacion', 'like', "%{$busqueda}%")
+              ->orWhere('posicion', 'like', "%{$busqueda}%")
+              ->orWhere('estado', 'like', "%{$busqueda}%");
+        });
     }
+
+    $rendimientos = $query->paginate(10)->withQueryString();
+
+    return view('rendimiento.index', compact('rendimientos'))
+        ->with('i', ($request->input('page', 1) - 1) * $rendimientos->perPage());
+}
+
 
     /**
      * Show the form for creating a new resource.
@@ -40,7 +53,7 @@ class RendimientoController extends Controller
         Rendimiento::create($request->validated());
 
         return Redirect::route('rendimientopag')
-            ->with('success', 'Rendimiento created successfully.');
+            ->with('success', '');
     }
 
     /**
@@ -71,14 +84,19 @@ class RendimientoController extends Controller
         $rendimiento->update($request->validated());
 
         return Redirect::route('rendimientopag')
-            ->with('success', 'Rendimiento updated successfully');
+            ->with('success', '');
     }
 
-    public function destroy($id): RedirectResponse
+   public function destroy($id): RedirectResponse
     {
-        Rendimiento::find($id)->delete();
+        $rendimiento = Rendimiento::find($id);
+
+        if ($rendimiento ) {
+            $rendimiento ->estado = false;   // 👈 se asigna manualmente
+            $rendimiento ->save();
+        }
 
         return Redirect::route('rendimientopag')
-            ->with('success', 'Rendimiento deleted successfully');
+            ->with('success', '');
     }
 }

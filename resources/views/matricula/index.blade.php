@@ -40,8 +40,9 @@
 									<th >Fecha Matricula</th>
 									<th >Fecha Inicio</th>
 									<th >Fecha Fin</th>
-									<th >Observaciones</th>
-									<th >Categoria</th>
+                                    <th >Estado</th>
+                                    <th >Observaciones</th>
+									<th >Categoria Sub</th>
 									<th >Nivel</th>
 									<th >Id Jugador</th>
 									<th >Id Usuario</th>
@@ -58,6 +59,7 @@
 										<td >{{ $matricula->fecha_matricula }}</td>
 										<td >{{ $matricula->fecha_inicio }}</td>
 										<td >{{ $matricula->fecha_fin }}</td>
+                                        <td >{{ $matricula->estado==1?"Activo":"Inactivo" }}</td>  
 										<td >{{ $matricula->observaciones }}</td>
 										<td >{{ $matricula->categoria }}</td>
 										<td >{{ $matricula->nivel }}</td>
@@ -72,6 +74,9 @@
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm" onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
                                                 </form>
+                                                
+
+
                                             </td>
                                         </tr>
                                     @endforeach
