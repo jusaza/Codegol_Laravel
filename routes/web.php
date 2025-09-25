@@ -40,7 +40,7 @@ Route::view('/pagina_original', 'pagina_original');
 Route::resource('usuarios', UsuarioController::class);
 Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'index'])->name('usuariopag');
 
-Route::resource('roles', RolController::class);
+Route::resource('rols', RolController::class);
 
 Route::resource('entrenamientos', EntrenamientoController::class);
 Route::get('/entrenamientopag', [EntrenamientoController::class, 'index'])->name('entrenamientos.page');
