@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Http\Requests\PagoRequest;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PagoController extends Controller
 {
@@ -20,7 +21,7 @@ class PagoController extends Controller
                     ->orderBy('id_pago','asc')
                     ->get();
 
-        $pdf = Pdf::loadView('pago.reporte', compact('pagos'))
+        $pdf = Pdf::loadView('pago.reportes', compact('pagos'))
                 ->setPaper('a4', 'landscape');
 
         return $pdf->download('reporte_pagos.pdf');
