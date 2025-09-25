@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UsuarioRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {

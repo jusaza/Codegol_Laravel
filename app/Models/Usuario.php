@@ -82,8 +82,8 @@ class Usuario extends Model
     }
 
     public function roles()
-{
+   {
     return $this->belongsToMany(Rol::class, 'detalles_usuario_rol', 'id_usuario', 'id_rol');
-}
+   }
     
 }
