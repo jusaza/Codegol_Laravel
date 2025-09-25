@@ -37,7 +37,7 @@ Route::view('/pagina_original', 'pagina_original');
 //Controladores 
 
 Route::resource('usuarios', UsuarioController::class);
-Route::resource('pago', PagoController::class);
+Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'index'])->name('usuariopag');
 
 Route::resource('entrenamientos', EntrenamientoController::class);
 Route::get('/entrenamientopag', [EntrenamientoController::class, 'index'])->name('entrenamientos.page');
@@ -50,3 +50,5 @@ Route::get('/matriculapag', [App\Http\Controllers\MatriculaController::class, 'p
 
 Route::resource('rendimientos', RendimientoController::class);//locos3
 Route::get('/rendimientopag', [App\Http\Controllers\RendimientoController::class, 'index'])->name('rendimientopag');//locos4
+
+Route::resource('pago', PagoController::class);
