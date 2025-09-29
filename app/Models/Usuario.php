@@ -47,7 +47,7 @@ class Usuario extends Model
      * @var array<int, string>
      */
     protected $fillable = ['correo', 'contrasena', 'nombre_completo', 'num_identificacion', 'tipo_documento', 'telefono_1', 'telefono_2', 'direccion', 'genero', 'fecha_nacimiento', 'lugar_nacimiento', 'grupo_sanguineo', 'foto_perfil', 'estado', 'id_usuario_registro', 'id_responsable'];
-
+    
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -89,5 +89,3 @@ class Usuario extends Model
         return $this->hasMany(\App\Models\Matricula::class, 'id_jugador', 'id_usuario');
     }
    }
-    
-
