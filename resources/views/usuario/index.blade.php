@@ -93,7 +93,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
-// CSV
+// Formato CSV
 document.getElementById('exportarCSV').addEventListener('click', function() {
     let tabla = document.getElementById('tablaUsuarios');
     let filas = tabla.querySelectorAll('tr');
@@ -113,7 +113,7 @@ document.getElementById('exportarCSV').addEventListener('click', function() {
     link.click();
 });
 
-// XLSX
+// Formato XLSX
 document.getElementById('exportarXLSX').addEventListener('click', function() {
     let tabla = document.getElementById('tablaUsuarios');
     let wb = XLSX.utils.book_new();
@@ -130,7 +130,7 @@ document.getElementById('exportarXLSX').addEventListener('click', function() {
     XLSX.writeFile(wb, 'usuarios.xlsx');
 });
 
-// PDF
+// Formato PDF
 document.getElementById('exportarPDF').addEventListener('click', function() {
     const { jsPDF } = window.jspdf;
     let doc = new jsPDF();
@@ -151,7 +151,7 @@ document.getElementById('exportarPDF').addEventListener('click', function() {
         if(y > 280){ doc.addPage(); y=10; }
     });
 
-    doc.save('usuarios.pdf');
+    doc.save('usuarios.pdf'); 
 });
 </script>
 

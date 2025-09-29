@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 class UsuarioController extends Controller
 {
     
-   public function login(Request $request) {
+    public function login(Request $request) {
     $documento = $request->input('num_identificacion');
     $contrasena = $request->input('contrasena');
 
