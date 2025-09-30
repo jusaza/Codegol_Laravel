@@ -17,7 +17,11 @@ Route::get('/', function () {
 Route::view('/servicios', 'servicios');
 Route::view('/nosotros', 'nosotros');
 Route::view('/login', 'auth.login');
+
 Route::view('/pagina_original', 'pagina_original')->name('pagina_original');
+Route::view('/pagina_original_entrenador', 'pagina_original_entrenador')->name('pagina_original_entrenador');
+Route::view('/pagina_original_jugador', 'pagina_original_jugador')->name('pagina_original_jugador');
+Route::view('/pagina_original_responsable', 'pagina_original_responsable')->name('pagina_original_responsable');
 
 
 // Rutas para las subcarpetas

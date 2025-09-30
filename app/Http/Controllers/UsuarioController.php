@@ -15,30 +15,47 @@ class UsuarioController extends Controller
 {
     
     public function login(Request $request)
-    {
-        $documento = $request->input('num_identificacion');
-        $contrasena = $request->input('contrasena');
+{
+    $documento = $request->input('num_identificacion');
+    $contrasena = $request->input('contrasena');
 
-        // Llamada al procedimiento almacenado
-        $resultado = DB::select('CALL acceso(?, ?)', [$documento, $contrasena]);
+    // Llamada al procedimiento almacenado
+    $resultado = DB::select('CALL acceso(?, ?)', [$documento, $contrasena]);
 
-        if (count($resultado) > 0) {
-            $usuario = $resultado[0];
-            $rol = $usuario->rol_usuario;
+    if (count($resultado) > 0) {
+        $usuario = $resultado[0];
+        $rol     = $usuario->rol_usuario;
 
-            // Guardamos datos en sesión
-            session([
-                'usuario_id' => $usuario->id_usuario,
-                'rol' => $rol,
-                'nombre' => $usuario->nombre
-            ]);
+        // Guardamos datos en sesión
+        session([
+            'usuario_id' => $usuario->id_usuario,
+            'rol_id'     => $usuario->id_rol,
+            'rol'        => $rol,
+            'nombre'     => $usuario->nombre_completo,
+        ]);
 
-            // Redirigimos a una ruta genérica (web.php decidirá la vista según el rol)
-            return Redirect::route('pagina_original')->with('success', 'Inicio de sesión exitoso.');
-        } else {
-            return Redirect::back()->withErrors(['msg' => 'Credenciales inválidas.']);
+        // Redirigir según rol
+        switch ($rol) {
+            case 'Administrador':
+                return redirect()->route('pagina_original')->with('nombre', $usuario->nombre_completo);
+
+            case 'Entrenador':
+                return redirect()->route('pagina_original_entrenador')->with('nombre', $usuario->nombre_completo);
+
+            case 'Jugador':
+                return redirect()->route('pagina_original_jugador')->with('nombre', $usuario->nombre_completo);
+
+            case 'Responsable':
+                return redirect()->route('pagina_original_responsable')->with('nombre', $usuario->nombre_completo);
+
+            default:
+                return redirect()->route('pagina_original')->withErrors(['msg' => 'Rol no reconocido.']);
         }
+    } else {
+        return Redirect::back()->withErrors(['msg' => 'Credenciales inválidas.']);
     }
+}
+
     /**
      * Display a listing of the resource.
      */
