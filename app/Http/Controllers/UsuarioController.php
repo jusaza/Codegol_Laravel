@@ -14,18 +14,31 @@ use Illuminate\Support\Facades\DB;
 class UsuarioController extends Controller
 {
     
-    public function login(Request $request) {
-    $documento = $request->input('num_identificacion');
-    $contrasena = $request->input('contrasena');
+    public function login(Request $request)
+    {
+        $documento = $request->input('num_identificacion');
+        $contrasena = $request->input('contrasena');
 
-    $resultado = DB::select('CALL acceso(?, ?)', [$documento, $contrasena]);
+        // Llamada al procedimiento almacenado
+        $resultado = DB::select('CALL acceso(?, ?)', [$documento, $contrasena]);
 
-    if (count($resultado) > 0) {
-        return Redirect::route('pagina_original')->with('success', 'Inicio de sesión exitoso.');
-    } else {
-        return Redirect::back()->withErrors(['msg' => 'Credenciales inválidas.']);
+        if (count($resultado) > 0) {
+            $usuario = $resultado[0];
+            $rol = $usuario->rol_usuario;
+
+            // Guardamos datos en sesión
+            session([
+                'usuario_id' => $usuario->id_usuario,
+                'rol' => $rol,
+                'nombre' => $usuario->nombre
+            ]);
+
+            // Redirigimos a una ruta genérica (web.php decidirá la vista según el rol)
+            return Redirect::route('pagina_original')->with('success', 'Inicio de sesión exitoso.');
+        } else {
+            return Redirect::back()->withErrors(['msg' => 'Credenciales inválidas.']);
+        }
     }
-}
     /**
      * Display a listing of the resource.
      */
