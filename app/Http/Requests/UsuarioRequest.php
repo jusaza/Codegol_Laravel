@@ -22,13 +22,13 @@ class UsuarioRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-			'correo' => 'required|string|email|unique:usuario,correo',
+			'correo' => 'required|string|email',
 			'contrasena' => 'required|string|min:6',
 			'nombre_completo' => 'required|string|max:60',
-			'num_identificacion' => 'required|integer|unique:usuario,num_identificacion',
+			'num_identificacion' => 'required|integer|:usuario,num_identificacion',
 			'tipo_documento' => 'required|in:cc,ti,ce,pa,rc,pep,nit,nuip,dni,ppt',
-			'telefono_1' => 'required|integer|min:1000000000|max:9999999999',
-			'telefono_2' => 'nullable|integer|min:1000000000|max:9999999999',
+			'telefono_1' => 'required|integer',
+			'telefono_2' => 'nullable|integer',
 			'direccion' => 'required|string|max:50',
 			'genero' => 'required|in:m,f,otro',
 			'fecha_nacimiento' => 'required|date|before:today',
@@ -36,7 +36,6 @@ class UsuarioRequest extends FormRequest
 			'grupo_sanguineo' => 'required|in:a+,a-,b+,b-,ab+,ab-,o+,o-',
 			'foto_perfil' => 'nullable|file|image|max:2048',
 			'estado' => 'required|boolean',
-			'id_usuario_registro' => 'required|integer|exists:usuario,id_usuario',
 			'id_responsable' => 'nullable|integer|exists:usuario,id_usuario',
 			'roles' => 'nullable|array',
 			'roles.*' => 'integer|exists:rol,id_rol',
