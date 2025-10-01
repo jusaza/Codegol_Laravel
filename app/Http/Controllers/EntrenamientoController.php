@@ -6,6 +6,7 @@ use App\Models\Entrenamiento;
 use App\Models\DetallesUtiliza;
 use App\Models\Inventario;
 use App\Models\Matricula;
+use App\Models\Usuario;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\EntrenamientoRequest;
@@ -41,6 +42,8 @@ class EntrenamientoController extends Controller
     {
         $entrenamiento = new Entrenamiento();
         $inventarios = Inventario::all();
+        $usuarios = Usuario::all();  // Obtener todos los usuarios disponibles
+
 
         // Solo jugadores con matrícula activa y rol 'Jugador'
         $matriculas = Matricula::where('estado', true)
@@ -50,7 +53,7 @@ class EntrenamientoController extends Controller
             ->with('jugador')
             ->get();
 
-        return view('entrenamiento.create', compact('entrenamiento', 'inventarios', 'matriculas'));
+        return view('entrenamiento.create', compact('entrenamiento', 'inventarios', 'matriculas',"usuarios"));
     }
 
     /**

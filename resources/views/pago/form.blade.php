@@ -48,28 +48,34 @@
 </div>
 
 <div class="form-group mb-3">
-    <label for="id_usuario">Usuario</label>
-    <select name="id_usuario" id="id_usuario" class="form-control" required>
+    <label for="id_usuario" class="form-label">{{ __('Usuario') }}</label>
+    <select name="id_usuario" class="form-control @error('id_usuario') is-invalid @enderror" id="id_usuario" required>
+        <!-- Valor vacío por defecto si no se selecciona nada -->
         <option value="" disabled {{ old('id_usuario', $pago->id_usuario ?? '') == '' ? 'selected' : '' }}>Seleccione un usuario</option>
+
+        <!-- Recorrer todos los usuarios para mostrarlos como opciones -->
         @foreach($usuarios as $usuario)
             <option value="{{ $usuario->id_usuario }}" {{ old('id_usuario', $pago->id_usuario ?? '') == $usuario->id_usuario ? 'selected' : '' }}>
-                {{ $usuario->nombre }}
+                {{ $usuario->nombre_completo }} - {{ $usuario->num_identificacion }}
             </option>
         @endforeach
     </select>
 </div>
 
+
 <div class="form-group mb-3">
-    <label for="id_responsable">Responsable</label>
-    <select name="id_responsable" id="id_responsable" class="form-control" required>
-        <option value="" disabled {{ old('id_responsable', $pago->id_responsable ?? '') == '' ? 'selected' : '' }}>Seleccione un responsable</option>
-        @foreach($usuarios as $usuario)
-            <option value="{{ $usuario->id_usuario }}" {{ old('id_responsable', $pago->id_responsable ?? '') == $usuario->id_usuario ? 'selected' : '' }}>
-                {{ $usuario->nombre }}
+    <label for="id_responsable" class="form-label">{{ __('Responsable') }}</label>
+    <select name="id_responsable" class="form-control" id="id_responsable" required>
+        <option value="">Seleccionar Responsable</option>
+        @foreach($responsables as $responsable)
+            <option value="{{ $responsable->id_usuario }}"
+                {{ old('id_responsable', $pago->id_responsable ?? '') == $responsable->id_usuario ? 'selected' : '' }}>
+                {{ $responsable->nombre_completo }}
             </option>
         @endforeach
     </select>
 </div>
+
 
 <div class="form-group mb-3">
     <label for="id_matricula">Matrícula</label>
@@ -82,5 +88,7 @@
         @endforeach
     </select>
 </div>
+
+
 
 <button type="submit" class="btn btn-primary">Guardar Pago</button>

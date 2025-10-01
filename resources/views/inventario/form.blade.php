@@ -11,10 +11,18 @@
             <label for="descripcion" class="form-label">{{ __('Descripcion') }}</label>
             <input type="text" name="descripcion" class="form-control @error('descripcion') is-invalid @enderror" value="{{ old('descripcion', $inventario?->descripcion) }}" id="descripcion" placeholder="Ingresa una breve descripción" required>
         </div>
-        <div class="Formgrupo">
-            <label for="id_usuario" class="form-label">{{ __('Id Usuario') }}</label>
-            <input type="number" name="id_usuario" class="form-control @error('id_usuario') is-invalid @enderror" value="{{ old('id_usuario', $inventario?->id_usuario) }}" id="id_usuario" placeholder="Ingresa el ID del usuario">
-        </div>
+
+<div class="Formgrupo">
+    <label for="id_usuario" class="form-label">{{ __('Usuario') }}</label>
+    <select name="id_usuario" class="form-control @error('id_usuario') is-invalid @enderror" id="id_usuario" required>
+        <option value="" disabled {{ old('id_usuario', $inventario?->id_usuario) == '' ? 'selected' : '' }}>Seleccione un usuario</option>
+        @foreach($usuarios as $usuario)
+            <option value="{{ $usuario->id_usuario }}" {{ old('id_usuario', $inventario?->id_usuario) == $usuario->id_usuario ? 'selected' : '' }}>
+                {{ $usuario->nombre_completo }} - {{ $usuario->num_identificacion }}
+            </option>
+        @endforeach
+    </select>
+</div>
 
         <button type="submit" class="btn btn-primary">{{ __('Guardar Inventario') }}</button>
 

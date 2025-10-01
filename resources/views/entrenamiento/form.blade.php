@@ -24,10 +24,19 @@
             <label for="observaciones" class="form-label">{{ __('Observaciones') }}</label>
             <input type="text" name="observaciones" class="form-control @error('observaciones') is-invalid @enderror" value="{{ old('observaciones', $entrenamiento?->observaciones) }}" id="observaciones" placeholder="Ingrese Observaciones" required>
         </div>
-        <div class="Formgrupo">
-            <label for="id_usuario" class="form-label">{{ __('Id Usuario') }}</label>
-            <input type="number" name="id_usuario" class="form-control @error('id_usuario') is-invalid @enderror" value="{{ old('id_usuario', $entrenamiento?->id_usuario) }}" id="id_usuario" placeholder="Ingrese el ID del usuario" required>
+
+        <div class="form-group mb-3">
+            <label for="id_usuario" class="form-label">{{ __('Usuario') }}</label>
+            <select name="id_usuario" class="form-control @error('id_usuario') is-invalid @enderror" id="id_usuario" required>
+            <option value="" disabled {{ old('id_usuario', $entrenamiento?->id_usuario) == '' ? 'selected' : '' }}>Seleccione un usuario</option>
+            @foreach($usuarios as $usuario)
+            <option value="{{ $usuario->id_usuario }}" {{ old('id_usuario', $entrenamiento?->id_usuario) == $usuario->id_usuario ? 'selected' : '' }}>
+                {{ $usuario->nombre_completo }} - {{ $usuario->num_identificacion }}
+            </option>
+            @endforeach
+        </select>
         </div>
+
 
         
 {{-- ...campos principales... --}}

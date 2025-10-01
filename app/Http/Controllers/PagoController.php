@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Http\Requests\PagoRequest;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\Usuario;
+use App\Models\Matricula;
 
 class PagoController extends Controller
 {
@@ -52,10 +54,14 @@ class PagoController extends Controller
     public function create(): View
     {
         $pago       = new Pago();
-        $usuarios   = \App\Models\Usuario::all();
-        $matriculas = \App\Models\Matricula::all();
+        $usuarios   = Usuario::all();
+        $matriculas = Matricula::all();
+        $responsables = Usuario::whereHas('roles', function($query) {
+        $query->where('rol_usuario', 'Responsable');  // Asegúrate de que 'rol_usuario' es el campo correcto
+    })->get();
 
-        return view('pago.create', compact('pago','usuarios','matriculas'));
+
+        return view('pago.create', compact('pago','usuarios',"responsables",'matriculas'));
     }
 
     /**

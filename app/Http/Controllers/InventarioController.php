@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inventario;
+use App\Models\Usuario;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\InventarioRequest;
@@ -33,8 +34,9 @@ class InventarioController extends Controller
     public function create(): View
     {
         $inventario = new Inventario();
+        $usuarios = Usuario::all();
 
-        return view('inventario.create', compact('inventario'));
+        return view('inventario.create', compact('inventario',"usuarios"));
     }
 
     /**
