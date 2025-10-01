@@ -29,7 +29,7 @@ class UsuarioController extends Controller
         // Guardamos datos en sesión
         session([
             'usuario_id' => $usuario->id_usuario,
-            'rol_id'     => $usuario->id_rol,
+            //'rol_id'     => $usuario->id_rol,
             'rol'        => $rol,
             'nombre'     => $usuario->nombre_completo,
         ]);
